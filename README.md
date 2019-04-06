@@ -5,17 +5,9 @@
 ### 不要删除别人的代码！ 目录结构
                      
 ```
-01：第一次作业提交的目录         
-    xuehao-mage 用自己的名字新建文件夹             
-    xuehao-zuoye.py 作业的代码文件            
-    xuehao-xiaozhi的目录          
-    xuehao-zuoye.py 作业代码文件       
-02：第二次作业提交的目录     
-    xuehao-mage 用自己的名字新建文件夹          
-    xuehao-zuoye.py 作业的代码文件                     
-    xuehao-xiaozhi的目录              
-    xuehao-zuoye.py 作业代码文件             
-以此类推
+每次作业请创建单独的目录，例如
+P21000-张三/第一周/学习计划.txt
+P21000-张三/第一周/example.py
 ```
 
 ### 1.命令行添加代码
