@@ -12,7 +12,7 @@ while not flag:
         else:
             while not flag:
                 num_2 = input("Please enter a number again:").strip()
-                if num_1.isdigit() == False:
+                if num_2.isdigit() == False:
                     continue
                 if opr == '+':
                     print('Result:', int(num_1) + int(num_2))
