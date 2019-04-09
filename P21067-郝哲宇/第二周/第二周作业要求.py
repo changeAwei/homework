@@ -59,7 +59,8 @@ while True:
     one = input('用户输入一个数字#:')
     two = input('再次输入一个数字#:')
     operation = input('提示输入操作符（+ - * /）#:')
-    print('{}{}{}={}'.format(one,operation,two,int(one)+int(two)))
+    oper = one operation two
+    print('{}{}{}={}'.format(one,operation,two,oper))
     FLAG = input('输入q 退出,输入c继续')
     if FLAG=='q' or FLAG=='Q':
         break
