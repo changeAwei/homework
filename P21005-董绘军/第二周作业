@@ -1,0 +1,24 @@
+def calc(x,y,z):
+    if y == '+':
+        return print('{}+{}={}'.format(x,z,x+z))
+    elif y == '-':
+        return print('{}-{}={}'.format(x,z,x-z))
+    elif y == '*':
+        return print('{}*{}={}'.format(x,z,x*z))
+    elif y =='/':
+        return print('{}/{}={}'.format(x,z,x/z))
+    else:
+        print("plz only input +-*/")
+        pass
+
+d = True
+while d:
+    a = int(input("plz input num1: "))
+    b = input("plz +-*/")
+    c = int(input("plz input num2: "))
+    calc(a,b,c)
+    d = input('countine y or n: ')
+    if d == 'y':
+        d = True
+    else:
+        d = False
