@@ -12,7 +12,15 @@
   list.insert(i,x) 在列表索引'i'中,插入一个元素x。索引i之前的元素不懂，之后的元素索引值+1.
   list.reverse()  将列表元素顺序反转。
   list.pop()    将列表中最后一个元素移除列表
+<<<<<<< HEAD
   list.extend(iterable) 将可迭代对象一个一个的追加至列表尾部
   list.append(x) 将元素'x'追加至列表尾部
   list.sort()   将列表排序 
   list.clear()  清空列表
+=======
+  list.extend(iterable) ：将可迭代对象一个一个的追加至列表尾部
+  list.append(x) ：将元素'x'追加至列表尾部
+  list.sort() :  将列表排序 
+  
+   
+>>>>>>> 53f0e4e3ab8ec5c1308be125ed3b08fe9b01b1af
