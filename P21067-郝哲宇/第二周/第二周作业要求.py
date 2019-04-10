@@ -33,7 +33,7 @@
             11、list排序：lst.sort(#reverse=False) #排序后重新赋值给lst并返回None
             12、list计数：lst.count('周润发') #发哥是唯一的
             13、list获取长度：len(lst) #的到元素有多少个
-            14、。。。。。。
+            14、max,min最大最小值
     
     '''
 #4. 实现一个简易的计算器，效果如下：
