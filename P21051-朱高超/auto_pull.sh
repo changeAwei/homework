@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PY_PATH=/Users/gordon/Documents/Code/mage.py/homework/P21051-朱高超
+PY_PATH=/Users/`whoami`/Documents/Code/mage.py/homework/P21051-朱高超
 
 cd ${PY_PATH}
 git pull
