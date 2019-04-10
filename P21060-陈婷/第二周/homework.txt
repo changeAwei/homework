@@ -16,5 +16,3 @@
   list.append(x) 将元素'x'追加至列表尾部
   list.sort()   将列表排序 
   list.clear()  清空列表
-  
-   
