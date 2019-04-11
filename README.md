@@ -20,7 +20,7 @@ centos：
 Ubuntu：       
   apt-get install git
   
-git clone https://github.com/magedu-python17/homework.git
+git clone https://github.com/magedu-python21/homework.git
 
 更新本地代码 git pull
 
