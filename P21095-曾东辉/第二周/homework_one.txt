@@ -54,11 +54,15 @@ len(list):
     （5）. 在不退出程序的前提下，可以允许用户继续输入新一组数据计 
 
 while True:
-	a = input('请输入一个数字：')	
+	a = int(input('请输入一个数字：'))
 	x = input('请输入操作符（+ - * /）:')
-	b = input('请输入一个数字：')	
-	if x == '+':  c = flo(a) + flo(b)
-	if x == '-':   c = flo(a) - flo(b)
-	if x == '*':   c = flo(a) * flo(b)
-	if x == '/':   c = flo(a) / flo(b)	#不一定能整除
-	print('计算结果为：', c)
+	b = int(input('请输入一个数字：'))	
+	if x == '+':
+		c = a + b
+	elif x == '-':
+		c = a - b
+	elif x == '*':
+		c = a * b
+	elif x == '/':
+		c = a / b
+	print('运算结果为', c)
