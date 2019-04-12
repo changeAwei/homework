@@ -1,0 +1,32 @@
+1. 使用本周和之前所学习的知识实现cat命令（支持查看内容和-n参数功能即可）
+import argparse
+parser = argparse.ArgumentParser()
+
+parser.add_argument('files', metavar='F', type=str, nargs='+')
+parser.add_argument('-n', '--numbers', action='store_true',
+        help='Print line numbers')
+
+args = parser.parse_args()
+
+print(">>> parsed args: ", args)
+
+line_number = 1
+for in_file_name in args.files:
+    in_file = open(in_file_name)
+    if args.numbers:
+        for line in in_file.readlines():
+            print(f"\t{line_number}\t{line}", end="")
+            line_number += 1
+    else:
+        print(in_file.read())
+        
+2. 有字符串”not 404 found 张三 99 深圳”，使用正则过滤掉英文和数字，最终得到”张三 深圳”
+[^a-z,0-9,\s]{2}
+
+3. 结合本周所讲的知识，总结如何设计一个日志分析系统，分析可能遇到问题和解决方法（文字阐述）。
+生产中会生成大量的系统日志、应用程序日志、安全日志等等日志，通过对日志的分析可以了解服务器的负载、健康状况，可以分析客户的分布情况、客户的行为，甚至基于这些分析可以做出预测。
+
+一般采集流程
+日志产出 -> 采集(Logstash、Flume、Scribe) -> 存储 -> 分析 -> 存储(数据库、NoSQL) -> 可视化
+数据提取，文本分析，需要依赖文件IO、字符串操作、正则表达式等技术
+异常处理，数据载入，时间窗口分析，数据分发（生产者消费者模型，queue模块——队列），数据的具体分析（状态码分析，useragent分析等）
