@@ -2,7 +2,7 @@ while True:
     num1 = str(input('please input number one:'))
     while num1.isdigit():
         num1=int(num1)
-        operator = (input('please input one operator + or  -  ro *  or /:'))
+        operator = input('please input one operator + or  -  ro *  or /:')
         operator1 = ['+','-','*','/']
         if operator in operator1:
             num2 = str(input('please input number two:'))
