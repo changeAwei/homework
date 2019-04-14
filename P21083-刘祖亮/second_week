@@ -19,3 +19,4 @@ extend(iteratable)->None:将可迭代对象追加进来
 remove(value):从左至右查找第一个匹配value的值，移除该元素，返回None，效率低
 pop([index])：不指定index,移除尾部元素，指定index，从左至右移除第一个匹配value的值，索引超界抛出IndexError错误
 clear():清除列表所有元素，剩下一个空列表
+sort():对列表进行排序，默认升序,倒序sort(reverse=true)
