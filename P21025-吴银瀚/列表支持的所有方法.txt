@@ -1,0 +1,16 @@
+l.index(value)  从指定区间查找元素内的元素是否匹配 匹配返回索引   
+
+l.count(value) 返回列表中匹配值的次数
+
+len() 返回列表中元素的个数
+
+list[index] = value   修改列表中的元素
+
+inset(index object)  在指定的索引处插入元素
+
+l.extend() 将可迭代的元素追加进list
+
+*  重复操作list
+
++  连接操作list
+
