@@ -9,7 +9,7 @@ while n == 0:
         print(a-c)
     if b == '*':
         print(a*c)
-    if b == '/':
+    if b == '/' and c > 0 or c < 0:
         print(a/c)
     else:
         break
