@@ -11,6 +11,7 @@ list_meth=[]
 for i in list_logs:
     list_meth.append(i.split()[1].replace('"','').upper())
 list_tmp=[]
+
 for i in list_meth:
     if i not in list_tmp:
         print('{}\t{}'.format(i,list_meth.count(i)))
