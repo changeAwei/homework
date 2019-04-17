@@ -78,7 +78,8 @@ print(id(lst),id(lst1),id(lst2))
 判断这个字符串的结尾：a='xiaohong' a.endswith('g') -->返回bool值
 统计字符串当中相同元素的个数：a='aabbbcccc' a.count('a') -->返回int类型
 获取字符串的index：a='xiaohong' a.find('g') 
-
+字符串转换成其他格式：a.encode()
+字符串的判断：a.islower/a.isupper()/a.isstartswith/a.isendswith...
 """
 
 #使用选择排序算法实现排序[3, 5, 1, 7, 9, 6, 8]
@@ -108,7 +109,19 @@ for _ in range(length1):
 print(lst1)
 
 #升序：
-print(set(lst))
+for i in range(length):
+    maxindex = i
+    for j in range(i+1,length):
+        if lst[maxindex] < lst[j]:
+            maxindex = j
+
+    if i != maxindex:
+        temp =lst[i]
+        lst[i] = lst[maxindex]
+        lst[maxindex] = temp
+
+print(lst)
+
 """
 
 #有如下一个字符串变量logs，请统计出每种请求类型的数量（提示：空格分割的第2列是请求类型），得到如下输出：
@@ -126,6 +139,7 @@ logs = '''
 ''' 
 
 """
+
 logs = '''
 111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
 111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
@@ -133,12 +147,22 @@ logs = '''
 223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
 111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
 '''
-
+#第一种
 log_lst = logs.split(" ")
-print(log_lst)
 
 lst1 = log_lst[1:-1:5]
 lst1_keywords=" ".join(lst1)
 lst1_upper=lst1_keywords.upper()
 print('POST',lst1_upper.count('POST'))
 print('GET',lst1_upper.count('GET'))
+
+#优化
+log_lst = logs.strip().splitlines() #转化成去重空格并去除换行符的列表
+list_meth=[]
+for i in log_lst:
+    list_meth.append(i.split()[1].replace('"','').upper()) #提取第二个关键字并替换引号
+print(list_meth)
+log_dic={}
+for i in list_meth:
+    log_dic[i] = log_dic.get(i,0)+1
+print(log_dic)
