@@ -82,7 +82,7 @@
 #4. 使用选择排序算法实现排序[3, 5, 1, 7, 9, 6, 8]
 def fn(nums):
     if isinstance(nums,list):
-        n = nums
+        n = nums   #不替换则原地修改
         for i in range(len(n)//2):
             maxindex = i
             minindex = -i - 1
