@@ -1,0 +1,19 @@
+logs = '''
+111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
+111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
+111.13.100.92 "Post /mock/login/ HTTP/1.1" 200 
+223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
+111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
+''' 
+lst = logs.upper().splitlines()
+lst2 = [i.split('"',maxsplit=1) for i  in lst]
+POST = 0
+GET = 0
+for j in range(1,6):
+    a = lst2[j][1].partition(' ')
+    b = a[0]
+    if b.startswith('POST'):
+        POST += 1
+    else:
+        GET +=1
+print(POST,GET)

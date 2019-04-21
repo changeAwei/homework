@@ -57,12 +57,15 @@ while True:
 	a = int(input('请输入一个数字：'))
 	x = input('请输入操作符（+ - * /）:')
 	b = int(input('请输入一个数字：'))	
-	if x == '+':
-		c = a + b
-	elif x == '-':
-		c = a - b
-	elif x == '*':
-		c = a * b
-	elif x == '/':
-		c = a / b
-	print('运算结果为', c)
+	n = ('+','-','*','/')
+	if x in n:
+		if x == '+':
+			c = a + b
+		elif x == '-':
+			c = a - b
+		elif x == '*':
+			c = a * b
+		elif x == '/':
+			c = a / b
+		print('运算结果为', c)
+

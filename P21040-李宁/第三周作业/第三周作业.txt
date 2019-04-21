@@ -1,0 +1,45 @@
+1. 说明列表的浅拷贝和深拷贝的区别
+   (1)浅拷贝：也称影子拷贝，指向的是同一个内存地址
+   (2)深拷贝：相当于又复制了一份
+	
+2. 说明列表和元组的相同点和不同点
+	相同点：可以存储任何数据类型，且可以通过索引去访问
+	不同点：列表可变，元组不可变
+	
+3. 请写出字符串支持的所有方法及说明（例如: lower 返回字符串的小写）
+	 count: 统计个数
+	 capitalize：首字母大写
+	 endswith：以某字符串结束
+	 startswith：以某字符串开头
+	 find：查找到第一个元素，并将第一个索引值返回
+	 format：格式化字符串
+	 replace：替换
+	 split：分割
+	 reverse：反转
+	 upper：大写
+	 lower：小写
+	 
+4. 使用选择排序算法实现排序[3, 5, 1, 7, 9, 6, 8]
+
+lst = [3, 5, 1, 7, 9, 6, 8]
+for i in range(len(lst)-1):
+    min = i
+    for j in range(i+1,len(lst)):
+        if lst[min] > lst[j]:
+            min = j
+    temp = lst[min]
+    lst[min] = lst[i]
+    lst[i] = temp
+print(lst)
+
+5. 有如下一个字符串变量logs，请统计出每种请求类型的数量（提示：空格分割的第2列是请求类型），得到如下输出：
+POST 2
+GET 3
+下边是logs变量：
+logs = '''
+111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
+111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
+111.13.100.92 "Post /mock/login/ HTTP/1.1" 200 
+223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
+111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
+''' 
