@@ -20,270 +20,100 @@
 
 	center()：返回长度为width的字符串，左右以fillchar来填充，fillchar默认是空格
 		S.center(width[, fillchar])
-	count()：返回参数
+	count()：返回参数子串在字符串中出现的次数，start和end可省略，表示从字符串中开始查找的位置
 		S.count(sub[, start[, end]])
+		In [20]: s = 'ddd736dd'                                                                  
+		In [21]: s.count('dd')                                                                   
+		Out[21]: 2#为什么是2，因为当我们使用count的时候，是向后查找的，这和shell中的正则表示式不同，正则是贪婪的
+	encode()：返回一个bytes，这是对字符串进行编码，以字节的形式存储数据，并且enconding和errors参数都是不可省略的
+		S.encode(encoding='utf-8', errors='strict') -> bytes
+	endswith()：返回bool，表示是否与参数指定的子串结尾，True表示是，False表示否
+		S.endswith(suffix[, start[, end]]) -> bool
+		suffix参数可以是元组，start和end确定原字符串一个子串，判断是否以suffix结尾
 
- encode(...)
-     S.encode(encoding='utf-8', errors='strict') -> bytes
-     
-     Encode S using the codec registered for encoding. Default encoding
-     is 'utf-8'. errors may be given to set a different error
-     handling scheme. Default is 'strict' meaning that encoding errors raise
-     a UnicodeEncodeError. Other possible values are 'ignore', 'replace' and
-     'xmlcharrefreplace' as well as any other name registered with
-     codecs.register_error that can handle UnicodeEncodeErrors.
- 
- endswith(...)
-     S.endswith(suffix[, start[, end]]) -> bool
-     
-     Return True if S ends with the specified suffix, False otherwise.
-     With optional start, test S beginning at that position.
-     With optional end, stop comparing S at that position.
-     suffix can also be a tuple of strings to try.
- 
- expandtabs(...)
-     S.expandtabs(tabsize=8) -> str
-     
-     Return a copy of S where all tab characters are expanded using spaces.
-     If tabsize is not given, a tab size of 8 characters is assumed.
- 
- find(...)
-     S.find(sub[, start[, end]]) -> int
-     
-     Return the lowest index in S where substring sub is found,
-     such that sub is contained within S[start:end].  Optional
-     arguments start and end are interpreted as in slice notation.
-     
-     Return -1 on failure.
- 
- format(...)
-     S.format(*args, **kwargs) -> str
-     
-     Return a formatted version of S, using substitutions from args and kwargs.
-     The substitutions are identified by braces ('{' and '}').
- 
- format_map(...)
-     S.format_map(mapping) -> str
-     
-     Return a formatted version of S, using substitutions from mapping.
-     The substitutions are identified by braces ('{' and '}').
- 
- index(...)
+	find()：返回字符串的index，如果没找到返回-1，根据参数sub，找出字符串从start位置开始，end位置结束第一次匹配到的位置
+		S.find(sub[, start[, end]]) ->int
+		注意：即便指定了start和end，返回的index也是字符串原来的位置索引号
+	format()：返回一个被格式化的字符串，S中使用{}作为位置变量，将format()中的参数进行填充：在字符串输出是非常重要的函数
+		S.format(*args, **kwargs) -> str
+	index():返回子串在源字符串中的第一次匹配的位置，但是和find()的区别是，index()如果找不到子串的话就会产生ValueError异常
      S.index(sub[, start[, end]]) -> int
-     
-     Like S.find() but raise ValueError when the substring is not found.
- 
- isalnum(...)
-     S.isalnum() -> bool
-     
-     Return True if all characters in S are alphanumeric
-     and there is at least one character in S, False otherwise.
- 
- isalpha(...)
-     S.isalpha() -> bool
-     
-     Return True if all characters in S are alphabetic
-     and there is at least one character in S, False otherwise.
- 
- isdecimal(...)
-     S.isdecimal() -> bool
-     
-     Return True if there are only decimal characters in S,
-     False otherwise.
- 
- isdigit(...)
-     S.isdigit() -> bool
-     
-     Return True if all characters in S are digits
-     and there is at least one character in S, False otherwise.
- 
- isidentifier(...)
-     S.isidentifier() -> bool
-     
-     Return True if S is a valid identifier according
-     to the language definition.
-     
-     Use keyword.iskeyword() to test for reserved identifiers
-     such as "def" and "class".
- 
- islower(...)
-     S.islower() -> bool
-     
-     Return True if all cased characters in S are lowercase and there is
-     at least one cased character in S, False otherwise.
- 
- isnumeric(...)
-     S.isnumeric() -> bool
-     
-     Return True if there are only numeric characters in S,
-     False otherwise.
- 
- isprintable(...)
-     S.isprintable() -> bool
-     
-     Return True if all characters in S are considered
-     printable in repr() or S is empty, False otherwise.
- 
- isspace(...)
-     S.isspace() -> bool
-     
-     Return True if all characters in S are whitespace
-     and there is at least one character in S, False otherwise.
- 
- istitle(...)
-     S.istitle() -> bool
-     
-     Return True if S is a titlecased string and there is at least one
-     character in S, i.e. upper- and titlecase characters may only
-     follow uncased characters and lowercase characters only cased ones.
-     Return False otherwise.
- 
- isupper(...)
-     S.isupper() -> bool
-     
-     Return True if all cased characters in S are uppercase and there is
-     at least one cased character in S, False otherwise.
- 
- join(...)
-     S.join(iterable) -> str
-     
-     Return a string which is the concatenation of the strings in the
-     iterable.  The separator between elements is S.
- 
- ljust(...)
-     S.ljust(width[, fillchar]) -> str
-     
-     Return S left-justified in a Unicode string of length width. Padding is
-     done using the specified fill character (default is a space).
- 
- lower(...)
-     S.lower() -> str
-     
-     Return a copy of the string S converted to lowercase.
- 
- lstrip(...)
-     S.lstrip([chars]) -> str
-     
-     Return a copy of the string S with leading whitespace removed.
-     If chars is given and not None, remove characters in chars instead.
- 
- partition(...)
-     S.partition(sep) -> (head, sep, tail)
-     
-     Search for the separator sep in S, and return the part before it,
-     the separator itself, and the part after it.  If the separator is not
-     found, return S and two empty strings.
- 
- replace(...)
-     S.replace(old, new[, count]) -> str
-     
-     Return a copy of S with all occurrences of substring
-     old replaced by new.  If the optional argument count is
-     given, only the first count occurrences are replaced.
- 
- rfind(...)
-     S.rfind(sub[, start[, end]]) -> int
-     
-     Return the highest index in S where substring sub is found,
-     such that sub is contained within S[start:end].  Optional
-     arguments start and end are interpreted as in slice notation.
-     
-     Return -1 on failure.
- 
- rindex(...)
+	
+	isalnum()：判断字符串中是否只包含字母和数字（如果是空串，返回False）
+		S.isalnum() -> bool
+	isalpha()：判断字符串中是否只包含字母（如果是空串，返回False）
+		S.isalpha() -> bool
+	isdecimal()：判断字符串中是不是十进制的数字
+		S.isdecimal() -> bool
+	isdigit()：判断字符串中是否是数字('0.33'这样的返回False)
+		S.isdigit() -> bool
+	isidentifier():判断字符串是否是一个Python的关键字
+		S.isidentifier() -> bool
+		可以使用keyword.iskeyword()来判断是否是一个保留的关键字，像'str'、'class'
+	islower():判断是否都是小写字母，空串返回False
+		S.islower() -> bool
+	isnumeric()：判断字符串是否都是数字，'0.33'和空串返回False
+		S.isnumeric() -> bool
+
+	isspace()：判断字符串是否都是空格（'\n''\t'这些也属于），空串返回False
+		S.isspace() -> bool
+	isupper():判断字符串是否都是大写字母，空串返回False
+		S.isupper() -> bool
+	join()：字符串拼接，将一个可迭代对象中的每个对象转换成字符串，进行拼接
+		S.join(iterable) -> str
+	ljust()：将字符串左对齐输出，右边不足的用fillchar填充，fillchar默认是空格
+		S.ljust(width[, fillchar]) -> str
+	In [56]: s = 'dddddddddd'                                                                
+	In [57]: s.ljust(30,' ')                                                                 
+	Out[57]: 'dddddddddd                    '
+	lower()：将源字符串的字符全部小写，拷贝出来并返回
+		S.lower() -> str
+	lstrip()：将字符串左边的指定字符取出，如果chars指定了，将指定的chars去除
+		S.lstrip([chars]) -> str
+		In [62]: s                                                                               
+		Out[62]: '  SyntaxError: EOL while scanning string literal   '
+		In [63]: s.lstrip()                                                                      
+		Out[63]: 'SyntaxError: EOL while scanning string literal   '
+		In [64]: s.rstrip()                                                                      
+		Out[64]: '  SyntaxError: EOL while scanning string literal'
+	partition()：使用seq将字符串分割成两段，返回一个元组，元组中有三个元素，
+		其中：head指seq前面的部分，seq表示seq本身，tail表示seq后面的部分
+		S.partition(sep) -> (head, sep, tail)
+		注意两点：
+			如果sep出现了多次，取的index(sep),也就是说第一次出现的
+			如果sep不在S中，则head就是S，sep为空串，tail为空串
+	replace()：将字符串中的old字符串用new字符串替换，如果count指定了，表示替换count次，如果count不指定，默认表示替换第一个
+		S.replace(old, new[, count]) -> str
+	rfind()：和find函数一样的用法，不过是索引数为-1的位置开始find()
+		S.rfind(sub[, start[, end]]) -> int
+	rindex():和index()一样的用法，不过是索引数为-1的位置开始index()
      S.rindex(sub[, start[, end]]) -> int
-     
-     Like S.rfind() but raise ValueError when the substring is not found.
- 
- rjust(...)
+	
+	rjust():返回一个总长度为width的字符串，并且源字符串像右对齐，左边不足的补充fillchar,默认空格，并且width >= len(S)
      S.rjust(width[, fillchar]) -> str
-     
-     Return S right-justified in a string of length width. Padding is
-     done using the specified fill character (default is a space).
- 
- rpartition(...)
+	rpartition():和partition()一样的用法，从右边开始找第一个sep
      S.rpartition(sep) -> (head, sep, tail)
-     
-     Search for the separator sep in S, starting at the end of S, and return
-     the part before it, the separator itself, and the part after it.  If the
-     separator is not found, return two empty strings and S.
- 
- rsplit(...)
-     S.rsplit(sep=None, maxsplit=-1) -> list of strings
-     
-     Return a list of the words in S, using sep as the
-     delimiter string, starting at the end of the string and
-     working to the front.  If maxsplit is given, at most maxsplit
-     splits are done. If sep is not specified, any whitespace string
-     is a separator.
- 
- rstrip(...)
-     S.rstrip([chars]) -> str
-     
-     Return a copy of the string S with trailing whitespace removed.
-     If chars is given and not None, remove characters in chars instead.
- 
- split(...)
+	
+	rsplit()：字符串分割，返回一个元素都是str类型的list
+		S.rsplit(sep=None, maxsplit=-1) -> list of strings
+		以sep作为分隔符，从右向左开始分割，如果sep没有指定，那么以空格作为分割符；
+		如果maxsplit指定了，那么分割maxsplit次之后结束，默认是不限制次数
+	rstrip()：去除右边的指定的字符chars，如果没有指定，就是去除空格
+     S.rstrip([chars]) -> str 
+	split()：用法和rsplit()一样，不过是从左向右工作
      S.split(sep=None, maxsplit=-1) -> list of strings
-     
-     Return a list of the words in S, using sep as the
-     delimiter string.  If maxsplit is given, at most maxsplit
-     splits are done. If sep is not specified or is None, any
-     whitespace string is a separator and empty strings are
-     removed from the result.
- 
- splitlines(...)
+	splitlines()：分行，返回一个元素为string类型的list，其实就是以'\n'字符进行分割，不过可以用keepends对结尾进行指定
      S.splitlines([keepends]) -> list of strings
-     
-     Return a list of the lines in S, breaking at line boundaries.
-     Line breaks are not included in the resulting list unless keepends
-     is given and true.
  
- startswith(...)
-     S.startswith(prefix[, start[, end]]) -> bool
-     
-     Return True if S starts with the specified prefix, False otherwise.
-     With optional start, test S beginning at that position.
-     With optional end, stop comparing S at that position.
-     prefix can also be a tuple of strings to try.
- 
- strip(...)
-     S.strip([chars]) -> str
-     
-     Return a copy of the string S with leading and trailing
-     whitespace removed.
-     If chars is given and not None, remove characters in chars instead.
- 
- swapcase(...)
-     S.swapcase() -> str
-     
-     Return a copy of S with uppercase characters converted to lowercase
-     and vice versa.
- 
- title(...)
-     S.title() -> str
-     
-     Return a titlecased version of S, i.e. words start with title case
-     characters, all remaining cased characters have lower case.
- 
- translate(...)
-     S.translate(table) -> str
-     
-     Return a copy of the string S in which each character has been mapped
-     through the given translation table. The table must implement
-     lookup/indexing via __getitem__, for instance a dictionary or list,
-     mapping Unicode ordinals to Unicode ordinals, strings, or None. If
-     this operation raises LookupError, the character is left untouched.
-     Characters mapped to None are deleted.
- 
- upper(...)
-     S.upper() -> str
-     
-     Return a copy of S converted to uppercase.
- 
- zfill(...)
-     S.zfill(width) -> str
-     
-     Pad a numeric string S with zeros on the left, to fill a field
-     of the specified width. The string S is never truncated.
+	startswith()：判断字符串是否以prefix字符串开头，与endswith()类似
+		S.startswith(prefix[, start[, end]]) -> bool
+	strip()：将字符串中开头和结尾的空格去掉，当然，如果chars被指定了，去除chars字符
+		S.strip([chars]) -> str
+	swapcase()：将字符串中的字符进行大小写反转
+		S.swapcase() -> str
+
+	upper()：将字符串中字符全部大写，并返回
+		S.upper() -> str
+	zfill()：用0在字符串左边填充，width是指新字符串的长度，也就是说width > len(S)才会在字符串左边填充0
+		S.zfill(width) -> str
 
