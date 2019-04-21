@@ -1,0 +1,43 @@
+1、对于容器对象，浅拷贝只是复制了容器地址，多个对象之间的拷贝，修改一个的值，会一同修改了其他浅拷贝的对象，而深拷贝，只是复制容器里面的元素，相互之间不影响。
+2、列表和元组的相同点：有序，可索引，可迭代
+	列表和元组的不同点：列表可变，元组不可变；赋值符号不同：中括号跟括号
+3、 
+s.capitalize()					第一个字母大写（整句不是每个单词）
+S.title()						转换成标题形式（每个单词第一个大写）
+
+s.center(width[, fillchar])		将字符放置中间，可自定义字符填充
+s.count(sub[, start[, end]])	统计某个字符（串）出现的次数
+S.encode(encoding='utf-8', errors='strict')	将字符串转换成字节类型bytes
+S.endswith(suffix[, start[, end]])	判断是否以某字符(串)结尾，可加范围（前包后不包）
+S.expandtabs(tabsize=8)			将s里面的tab用空格代替返回，默认返回空格=8
+S.find(sub[, start[, end]])		查看第一个出现的sub的索引号
+S.format(*args, **kwargs)		格式化，替代里面的{}
+S.format_map(mapping)
+S.index(sub[, start[, end]])	与s.find()类似，但错误时会异常
+S.join(iterable)				将字符用某个字符连接起来
+S.ljust(width[, fillchar])
+S.lower()
+S.lstrip([chars]) 				去除左边的空字符或指定字符
+s.maketrans(x, y=None, z=None, /)与S.translate(table)对应，进行字符串编码
+S.partition(sep) 				将s以sep为界分成左右两部分及中间的seq
+S.replace(old, new[, count])	替换字符，可以指定替换的次数
+replace()，rjust()，rstrip()，rfind()，rpartition()，rindex()，rsplit()与无r的方法对应，只不过从右边开始
+S.split(sep=None, maxsplit=-1)	将s以seq进行分割
+S.splitlines([keepends])		以换行符进行替换（不同系统下换行符不同）
+S.startswith(prefix[, start[, end]])	判断是否以prefix开关
+S.strip([chars])				用于移除头尾指定的字符，默认移除空格
+S.swapcase()					将大写转换成小写，反之亦然
+S.translate(table) 				与s.maketrans对应
+S.upper() 						转换成大写
+S.zfill(width)					将数字形式的左边用0填充
+s.islower()		是否都是小写
+s.isspace()		是否只包含空白字符
+s.isalnum()		是否是字母和数字组成
+s.isdigit()		是否全部数字(0~9)。True: Unicode数字，byte数字（单字节），全角数字（双字节），罗马数字
+s.isnumeric()	True: Unicode数字，全角数字（双字节），罗马数字，汉字数字
+s.isdecimal()	是否只包含十进制数字。True: Unicode数字，，全角数字（双字节）
+s.istitle()		是否每个意义首字母大写
+s.isalpha()		是否是字母
+s.isidentifier()是不是字母和下划线开头,其他都是字母、数字、下划线
+s.isprintable()	判断字符串中所有字符是否都是可打印字符(in repr())或字符串为空。
+s.isupper()		是否全部大写

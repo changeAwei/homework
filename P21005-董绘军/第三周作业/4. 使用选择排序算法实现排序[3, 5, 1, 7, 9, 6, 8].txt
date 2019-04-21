@@ -1,0 +1,25 @@
+lst = [1,9,3,4,7,8,5,6,2]
+lst = [1,2,2,2,2,2,9]
+lst = [1,1,1,1,1,2]
+c = 0
+sw = 0
+for i in range((len(lst)-1)//2):
+    maxindex = i
+    c += 1
+    minindex = -i-1
+    for j in range(i+1,len(lst)-i):
+        if lst[maxindex] < lst[j]:
+            maxindex = j
+        if lst[-j-1] < lst[minindex]:
+            minindex = -j-1
+    if lst[maxindex] == lst[minindex]:
+        break
+    if i != maxindex:
+        lst[i],lst[maxindex] = lst[maxindex],lst[i]
+        sw += 1
+        if i == minindex or minindex == i - len(lst):
+            minindex = maxindex - len(lst)
+    if minindex != -i-1 and lst[minindex] != lst[-i-1]:
+        lst[-i-1],lst[minindex] = lst[minindex],lst[-i-1]
+        
+print(lst,c,sw)
