@@ -6,12 +6,19 @@
 	errors？，默认是'strict'
 	
 	capitalize():返回字符串，首字母大写
-	casefold(...)
- |      S.casefold() -> str
- |      
- |      Return a version of S suitable for caseless comparisons.
- |  
- |  center(...)
+	casefold()：返回一个字符串，类似lower()方法，不过lower()方法只对英文起作用
+		In [1]: s = 'dyegadudhenndkeidund'                                                       
+		In [2]: s.casefold()                                                                     
+		Out[2]: 'dyegadudhenndkeidund'
+		In [3]: s = 'TeddIITITI丁常祥'                                                           
+		In [4]: s.casefold()                                                                     
+		Out[4]: 'teddiititi丁常祥'
+		In [5]: s.lower()                                                                        
+		Out[5]: 'teddiititi丁常祥'
+		In [6]: s
+		Out[6]: 'TeddIITITI丁常祥'
+
+	center()：返回字符串，
  |      S.center(width[, fillchar]) -> str
  |      
  |      Return S centered in a string of length width. Padding is
