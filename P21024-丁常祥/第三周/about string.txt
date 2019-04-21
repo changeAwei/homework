@@ -18,7 +18,7 @@
 		In [6]: s
 		Out[6]: 'TeddIITITI丁常祥'
 
-	center()：返回字符串，
+	center()：返回长度为width的字符串，左右以fillchar来填充，fillchar默认是空格
  |      S.center(width[, fillchar]) -> str
  |      
  |      Return S centered in a string of length width. Padding is
