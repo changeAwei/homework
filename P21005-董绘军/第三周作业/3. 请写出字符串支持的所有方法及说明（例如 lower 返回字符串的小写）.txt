@@ -1,0 +1,95 @@
+1、join连接：'string'.join(iterable),将可迭代对象用string连接起来，返回一个新字符串
+
+2、+连接：ab = 'ab' + 'cd'
+
+3、分割
+   （1）：split：str.split（sep=None，maxsplit = -1）默认已空格作为分隔符，默认切割次数=-1有多少切多少，maxsplit = 0 则不切割，maxsplit=1 则从左至右遇到第一个切割符进行一次切割，以此类推，切割后返回一个列表。
+example：
+   'abc@def@ghi'.split('@',maxsplit=1)返回['abc', 'def@ghi']
+rsplit与split用法基本一致，区别在于rsplit是从右往左切。
+   （2）：partition：str.partition(sep)->(head,sep,tail)将字符串分割为2段，返回这2段和分割符的元组,从左至右查找，遇到分隔符就把字符串分割后返回元组，如果分隔符没有匹配到则返回head，sep和tail为空元素，分隔符必须指定不然会报错。
+example：
+    'abc@def@ghi'.partition('') 返回value error
+    'abc@def@ghi'.partition('*') 返回('abc@def@ghi', '', '')
+    'abc@def@ghi'.partition('@') 返回('abc', '@', 'def@ghi')
+rpartition与partition用法基本一致，区别在于rpartition是从右往左查找分隔符
+
+   （3）：splitline：splitlines（[keepends]）返回列表，表示按照换行符进行分割，keepends表示是否保留换行符，默认不保留换行符。
+example：
+    ghi\rjk\r\nl\n\nmno'.splitlines(keepends=False)返回['abc@def@ghi', 'jk', 'l', '', 'mno']
+    'abc@def@ghi\rjk\r\nl\n\nmno'.splitlines(keepends=True)返回['abc@def@ghi\r', 'jk\r\n', 'l\n', '\n', 'mno']
+
+4、大小写
+   upper（）全大写 
+   lower（）全小写
+   swapcase（）交互大小写
+example
+'abcd'.upper()返回'ABCD'
+'ABCd'.lower()返回'abcd'
+'ABCd'.swapcase()返回'abcD'
+
+5、字符串排版
+    title（）标的的每个单词首字母大写
+    capitalize()首个单子的首字母大写
+    center（width，[fillchar]）width打印宽度，fillchar填充的字符
+    zfill（width），width打印宽度，居右前面用0填充
+    ljust（width,[fillchar]）左对齐
+    rjust(width,[fillchar])右对齐
+    
+'this is a title'.title()返回'This Is A Title'
+'this is a title'.capitalize()返回'This is a title'
+'this is a title'.center(60,'@')返回'@@@@@@@@@@@@@@@@@@@@@@this is a title@@@@@@@@@@@@@@@@@@@@@@@'
+'this is a title'.zfill(30)返回'000000000000000this is a title'
+'this is a title'.ljust(30,'*')返回'this is a title***************'
+'this is a title'.rjust(30,'*')返回'***************this is a title'
+
+
+6、字符串修改
+    replace（old，new[count]）:字符串中找到匹配替换为新子串，返回新字符串，count表示替换几次，不指定表示全部替换
+    strip([chars]):从字符串两端去除指定的chars，如果chars没指定去穿两端空白
+    lstrip：从左往右查找替换
+    rstrip：从右往左查找替换
+    find（sub，[start,[end]]）从左往右查找子串sub，找到返回索引，没找到返回-1
+    rfind(sub,[start,[end]])从右往左查找子串sub，找到返回索引，没找到返回-1
+    index（sub，[start,[end]]）从左往右查找子串sub，找到返回索引，没找到返回value error，时间复杂度O(n)
+    rindex(sub,[start,[end]])从右往左查找子串sub，找到返回索引，没找到返回value error,时间复杂度O(n)
+    count(sub,[start,[end]])在指定的区间内从左至右查找sub子串，找到返回统计个数，指定区间也是前包后不包，时间复杂度O(n)
+    len（string）返回字符串长度
+example
+'this is a title'.replace('is','are')返回'thare are a title'
+'this is a title'.replace('is','are',1)返回'thare is a title'
+'I am very very very sorry'.strip('Iy')返回' am very very very sorr'
+'I am very very very sorry'.find('ry')返回7
+'I am very very very sorry'.rfind('ry')返回23
+'I am very very very sorry'.find('b')返回-1
+'I am very very very sorry'.count('ve')返回3
+
+7、字符串判断
+    endswith（suffix[,start[,end]]）返回bool，表示字符串结尾是不是suffix
+    startswith（suffix[,start[,end]]）返回bool，表示字符串开头是不是suffix
+    isalnum()
+    isalpha()
+    isdecimal()是否只包含十进制数字
+    isdigit()
+    isidentifier()是不是字母和下划线开头，其他都是字母、数字下划线
+    islower()
+    isupper()
+    isspace()
+    以上返回bool
+
+example
+'I am very very very sorry'.endswith('ry',0,4)返回false
+'I am very very very sorry'.startswith('I',0,4)返回true
+
+
+
+
+
+
+
+
+
+
+
+
+
