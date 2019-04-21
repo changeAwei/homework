@@ -5,7 +5,7 @@ logs = '''
 223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
 111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
 '''
-log_lst = logs.split('\n')
+log_lst = logs.split('\n')                #以换行符 "\n"进行切割，获得了一个 n(行数) + 2 个元素的列表。
 post_count = 0
 get_count = 0
 for i in range(1,len(log_lst)-1):
