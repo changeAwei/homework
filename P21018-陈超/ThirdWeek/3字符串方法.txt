@@ -1,0 +1,146 @@
+字符串对象的方法
+1.
+str.capitalize()
+返回原字符串的副本，其首个字符大写，其余为小写。
+2.
+str.casefold()
+返回原字符串消除大小写的副本。消除大小写的字符串可用于忽略大小写的匹配。消除大小写类似于转为小写，但是更加彻底一些，因为它会移除字符串中的所有大小写变化形式。
+3.
+ str.center(width[, fillchar ])
+返回长度为width 的字符串，原字符串在其正中。使用指定的 fillchar 填充两边的空位（默认使用ASCII 空格符）。如果 width 小于等于 len(s) 则返回原字符串的副本。
+4.
+str.count(sub[, start[, end]])
+返回子字符串sub在[start, end] 范围内非重叠出现的次数。可选参数 start 与 end 会被解读为切片表示法子。
+5.
+str.encode(encoding=”utf-8”, errors=”strict”)
+返回原字符串编码为字节串对象的版本。默认编码为 'utf-8'。可以给出 errors 来设置不同的错误处理方案。errors 的默认值为 'strict'，表示编码错误会引发UnicodeError。其他可用的值为 'ignore', 'replace', 'xmlcharrefreplace', 'backslashreplace' 以及任何其他通过codecs. register_error() 注册的值。
+6.
+str.endswith(suffix[, start[, end]])
+如果字符串以指定的suffix 结束返回True，否则返回False。suffix 也可以为由多个供查找的后缀构成的元组。如果有可选项start，将从所指定位置开始检查。如果有可选项end，将在所指定位置停止比较。
+7.
+str.expandtabs(tabsize=8)
+返回字符串的副本，其中所有的制表符会由一个或多个空格替换，具体取决于当前列宽度和给定的制表符宽度。每tabsize 个字符设为一个制表位（默认值8时设定的制表位在列0,8,16依次类推）。要展开字符串，当前列将被设为零并逐一检查字符串中的每个字符。如果字符为制表符(\t)，则会在结果中插入一个或多个空格符，直到当前列等于下一个制表位。（制表符本身不会被复制。）如果字符为换行符(\n) 或回车符(\r)，它会被复制并将当前列重设为零。任何其他字符会被不加修改地复制并将当前列加一，不论该字符在被打印时会如何显示。
+8.
+str.find(sub[, start[, end]])
+返回子字符串sub 在s[start:end] 切片内被找到的最小索引。可选参数 start 与 end 会被解读为切片表示法。如果sub未被找到则返回-1。
+9.
+str.format(*args, **kwargs)
+执行字符串格式化操作。调用此方法的字符串可以包含字符串字面值或者以花括号{}括起来的替换域。每个替换域可以包含一个位置参数的数字索引，或者一个关键字参数的名称。返回的字符串副本中每个替换域都会被替换为对应参数的字符串值。
+10.
+str.index(sub[, start[, end]])
+类似于find()，但在找不到子字符串时会引发ValueError。
+11.
+str.isalnum()
+如果字符串中至少有一个字符且所有字符均为字母或数字则返回真值，否则返回假值。如果以下方法中的一个返回 True 则字符 c 为字母或数字: c.isalpha(), c.isdecimal(), c.isdigit(), or c.isnumeric()。
+12.
+str.isalpha()
+如果字符串中至少有一个字符且所有字符均为字母则返回真值，否则返回假值。
+注意:字母类字符是在Unicode 字符数据库中被定义为”Letter” 的字符，即一般分类特征属性为”Lm”, ”Lt”, ”Lu”, ”Ll”或”Lo” 其中之一。请注意这不同于Unicode 标准所定义的”Alphabetic” 特征属性。
+13.
+str.isascii()
+如果字符串为空或所有字符均为ASCII 字符则返回真值，否则返回假值。
+注意:ASCII 字符的码位范围为U+0000-U+007F。
+14.
+ str.isdecimal()
+如果字符串中至少有一个字符且所有字符均为十进制数字符则返回真值，否则返回假值。
+注意:十进制数字符是以10为基数的计数制会用来组成数值的字符，例如U+0660,ARABIC-INDICDIGITZERO。正式的定义为：十进制数字符就是Unicode一般分类”Nd”中的字符。
+15.
+str.isdigit()
+如果字符串中至少有一个字符且所有字符均为数字字符则返回真值，否则返回假值。
+注意:数字字符包括十进制数字符和需要特别处理的数字，例如兼容性上标数字。这也涵盖了不能被用来组成以10为基数的数值的数字，例如Kharosthi 数字。正式的定义为：数字字符就是特征属性值Numeric_Type=Digit或Numeric_Type=Decimal 的字符。
+16.
+str.isidentifier()
+如果字符串根据语言定义属于有效的标识符则返回真值。
+注意:请使用keyword.iskeyword() 来检测保留标识符，例如 def 和 class。
+17.
+str.islower()
+如果字符串中至少有一个区分大小写的字符4且此类字符均为小写则返回真值，否则返回假值。
+18.
+str.isnumeric()
+如果字符串中至少有一个字符且所有字符均为数值字符则返回真值，否则返回假值。
+注意:数值字符包括数字字符，以及所有在 Unicode 中设置了数值特性属性的字符，例如 U+2155, VULGAR FRACTION ONE FIFTH。正式的定义为：数值字符就是具有特征属性值 Numeric_Type=Digit, Numeric_Type=Decimal 或 Numeric_Type=Numeric 的字符。
+19.
+str.isprintable()
+如果字符串中所有字符均为可打印字符或字符串为空则返回真值，否则返回假值。
+注意:不可打印字符是在Unicode 字符数据库中被定义为”Other” 或”Separator” 的字符，例外情况是 ASCII 空格字符 (0x20)被视作可打印字符。（请注意在此语境下可打印字符是指当对一个字符串发起调用repr()时不必被转义的字符。它们与字符串写入sys.stdout 或sys.stderr 时所需的处理无关。）
+20.
+str.isspace()
+如果字符串中至少有一个字符且所有字符均为空白字符则返回真值，否则返回假值。
+注意:空白字符是在Unicode 字符数据库中被定义为”Other” 或”Separator” 并且其双向特征属性为”WS”, ”B” 或”S” 之一的字符。
+21.
+str.istitle()如果字符串中至少有一个字符且为标题字符串则返回真值，例如大写字符之后只能带非大写字符而小写字符必须有大写字符打头。否则返回假值。
+22.
+str.isupper()
+如果字符串中至少有一个区分大小写的字符4具此类字符均为大写则返回真值，否则返回假值。
+23.
+str.join(iterable)
+返回一个由iterable 中的字符串拼接而成的字符串。如果iterable 中存在任何非字符串值包括bytes对象则会引发TypeError。调用该方法的字符串将作为元素之间的分隔。
+24.
+str.ljust(width[, fillchar ])
+返回长度为 width 的字符串，原字符串在其中靠左对齐。使用指定的 fillchar 填充空位 (默认使用ASCII 空格符)。如果 width 小于等于 len(s) 则返回原字符串的副本。
+25.
+str.lower()
+返回原字符串的副本，其所有区分大小写的字符4均转换为小写。
+26.
+str.lstrip([chars])
+返回原字符串的副本，移除其中的前导字符。chars 参数为指定要移除字符的字符串。如果省略或为None，则 chars 参数默认移除空格符。
+注意:实际上 chars 参数并非指定单个前缀；而是会移除参数值的所有组合:
+27.
+static str.maketrans(x[, y[, z]])
+此静态方法返回一个可供str.translate() 使用的转换对照表。如果只有一个参数，则它必须是一个将Unicode码位序号（整数）或字符（长度为1的字符串）映射到Unicode 码位序号、（任意长度的）字符串或None 的字典。字符键将会被转换为码位序号。如果有两个参数，则它们必须是两个长度相等的字符串，并且在结果字典中，x中每个字符将被映射到y中相同位置的字符。如果有第三个参数，它必须是一个字符串，其中的字符将在结果中被映射到None。
+28.
+str.partition(sep)
+在sep 首次出现的位置拆分字符串，返回一个3元组，其中包含分隔符之前的部分、分隔符本身，以及分隔符之后的部分。如果分隔符未找到，则返回的3元组中包含字符本身以及两个空字符串。
+29.
+str.replace(old, new[, count])
+返回字符串的副本，其中出现的所有子字符串old都将被替换为new。如果给出了可选参数count，则只替换前count 次出现。
+30.
+str.rfind(sub[, start[, end]])
+返回子字符串sub在字符串内被找到的最大（最右）索引，这样sub将包含在s[start:end]当中。可选参数start 与 end 会被解读为切片表示法。如果未找到则返回-1。
+31.
+str.rindex(sub[, start[, end]])
+类似于rfind()，但在子字符串 sub 未找到时会引发ValueError。
+32.
+str.rjust(width[, fillchar ]) 
+返回一个左侧用fillchar填充至指定宽度的字符串副本，如果指定宽度小于原字符串的长度，则返回原字符串。
+33.
+str.rpartition(sep) 
+返回一个三元素元组为sep分割符前的部分为元素一，sep分隔符本身为元素二，sep分割符后的部分为元素三，如果没有sep分割符，则返回原字符串为元素一，剩下的两个为空字符串。
+34.
+str.rsplit(sep=None, maxsplit=-1) 
+类似split,只是rsplit从右侧的开始。
+35.
+str.rstrip([chars]) 
+类似strip,只是rstrip去除右侧的chars字符。
+ >>> ' spacious '.rstrip() 
+' spacious' 
+>>> 'mississippi'.rstrip('ipz') 
+'mississ' 
+36.
+str.split(sep=None, maxsplit=-1) 
+返回，以sep分割的字符串列表，maxsplit为，分割的次数，默认是全部分割。
+37.
+str.splitlines([keepends]) 
+返回一个包含各行作为元素的列表，按照行('\r', '\r\n', \n')分隔，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。
+38.
+str.startswith(prefix[, start[, end]]) 
+在start到end为止(如果只有start,也到字符串结尾字符结束，如果只有end,则以字符串起始字符开始)，在开头出现prefix的字符，则返回True,否则，返回Flase。
+39.
+str.strip([chars]) 
+返回一个去除首尾chars的字符串副本，如果chars为一个字符串，则去除该字符的所有组合，如果，chars为空，则，去除首尾的空格。
+40.
+str.swapcase() 
+返回一个大写转小写的字符串副本。
+41.
+str.title() 
+返回一个标题式的字符串版本，每个单词的首字母大写，之后的字母保持小写。
+42.
+str.translate(table) 
+返回一个将原字符串的每个字符通过指定的翻译表映射后的字符串副本，这个翻译表必须定义了__getitem__()方法的可索引对象。 
+43.
+str.upper() 
+返回原字符串的全大写的副本。
+44.
+str.zfill(width) 
+返回一个在左边用0填充到指定宽度的字符串，如果有正负号前缀的插入到最左边，占一位，如果指定宽度小于原字符串长度，则返回原字符串。
+
