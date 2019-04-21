@@ -1,0 +1,72 @@
+1. 说明列表的浅拷贝和深拷贝的区别
+	浅拷贝 shadow copy(影子拷贝)
+	深拷贝 deep copy 
+	浅拷贝仅仅只拷贝对象自身，内部元素引用的其他对象只拷贝一个引用；深拷贝是对外围和内部元素都拷贝了对象本身。而不是引用。因此深拷贝产生的副本可以随意修改，而不用担心会影响原始值。
+
+2. 说明列表和元组的相同点和不同点
+	相同点：
+	list 与 tuple 都是序列类型的容器对象，可以存放任何类型的数据、支持切片、迭代等操作
+	不同点：
+	tuple是不可变类型，大小固定，而 list 是可变类型、数据可以动态变化。
+
+3. 请写出字符串支持的所有方法及说明（例如: lower 返回字符串的小写）
+
+	(1) string.join(iterable) -> str	将可迭代对象使用string作为分隔符连接起来，返回一个新的字符串；
+
+	(2) + -> str 将2个字符串连接起来，返回一个新的字符串；
+
+	(3) split(sep=None,maxsplit=-1) -> list of strings 将字符串从左到右按照sep指定的字符串进行分割，缺省情况下空白字符串作为分隔符，maxsplit指定分割次数，-1表示遍历整个字符串。
+
+	(4) rsplit 从右向左分割；
+
+	(5) splitlines([keepends]) -> list of strings 按照行来切分字符串，keepends指的是是否保留行分隔符，行分割符包括\n、\r\n、\r等
+
+	(6) partition(sep) -> (head,sep,tail) 从左至右遇到分割符就把字符串分割成两部分，返回头、分隔符、尾三部分的三元组；如果没有找到分隔符，就返回头、2个空元素的三元组，sep分割字符串必须指定；
+
+	(7) upper()全部大写
+		lower()全部小写
+		swapcase（）交互大小写
+
+	(8) 字符串排版
+		title() -> str 标题是的每个单词都大写
+		capitalize() -> str 首个单词大写
+		center(width[,fillchar]) -> str width参数打印宽度，fillchar参数填充的字符
+		zfill(width) -> str 打印宽度width，居右，左边有0填充
+		ljust(width[,fillchar]) -> str 左对齐
+		rjust(width[,fillchar]) -> str 右对齐
+
+(9) 字符串修改
+		replace(old,new[,count]) -> str 字符串中找到匹配替换为新子串，返回新字符串，count指定替换次数，不指定就是全部替换
+
+(10) 字符串修改
+		strip([chars]) -> 从字符串两端去除指定的字符集char中的所有字符，如果chars没有指定，去除两端的空白字符
+		lstrip([chars])	 -> 从左开始
+		rstrip([chars])	 -> 从右开始
+(11) 字符串查找
+		find(sub[,star[,end]]) -> int 在指定区间[start,end)，从左到右查找子串sub。找到返回索引，没找到返回-1。
+		rfind(sub[,star[,end]]) -> int 在指定区间[start,end)，从右到左查找子串sub。找到返回索引，没找到返回-1。
+		index(sub[,star[,end]]) -> int 在指定区间[start,end)，从左到右查找子串sub。找到返回索引，没找到抛出异常ValueError。
+		rindex(sub[,star[,end]]) -> int 在指定区间[start,end)，从左到右查找子串sub。找到返回索引，没找到抛出异常ValueError。
+		len(string) 返回字符串的长度，即字符的个数
+		count(sub[,star[,end]]) -> int 在指定区间[start,end)，从左到右统计子串sub出现的次数。
+(12) 字符串判断
+		endswith(suffix[，start[,end]]) -> bool 在指定的区间[start,end),字符串是否suffix结尾
+		startswith(suffix[，start[,end]]) -> bool 在指定的区间[start,end),字符串是否prefix开头
+		isalnum() -> bool 是否是字母和数字组成
+		isalpha() 是否是字母
+		isdecimal() 是否只包含十进制数字
+		isdigit() 是否全部数字(0-9)
+		isidentifier() 是否是字母和下划线开头，其他都是字母、数字、下划线
+		islower() 是否全是小写
+		isupper() 是否全部大写
+		isspace() 是否只包含空白字符
+（13） 字符串格式化
+		printf style
+		format函数格式字符串语法(推荐使用)
+			"{}{xxx}".format(*args,**kwargs) -> str
+			args是位置参数，是一个元祖
+			kwargs是关键参数，是个字典
+			花括号表示占位符
+			{}表示按照顺序匹配位置参数，{n}表示取位置参数索引为n的值
+			{xxx}表示在关键字参数中搜索名称一致的
+			{{}}表示打印花括号
