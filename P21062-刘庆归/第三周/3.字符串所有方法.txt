@@ -1,0 +1,14 @@
+S.find(sub[, start[, end]]):找到返回第一个字符的索引，没找到返回-1.不报错
+string.center(width, fillchar=' '):句中字符串，默认空格填充
+join：并字符串中添加符号
+lower：全部小写
+upper：全部大写
+count: 统计个数
+capitalize：第一个单词首字母大写
+title：每个单词首字母大写 
+replace：替换
+split：以什么符号进行分割，默认空格
+strip:经常用来去除开头结尾空格
+translate:一次性可添加多个条件替换，前提用str.maketrans创建转换列表
+format：格式化字符串
+               -----以上归纳参照《python基础教程第三版》
