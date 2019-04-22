@@ -1,0 +1,43 @@
+说明列表的浅拷贝和深拷贝的区别
+  浅拷贝：拷贝了最外围的对象本身，内部的元素都只是拷贝了一个引用而已。也就是，把对象复制一遍，但是该对象中引用的其他对象我不复制
+  深拷贝：外围和内部元素都进行了拷贝对象本身，而不是引用。也就是，把对象复制一遍，并且该对象中引用的其他对象我也复制。
+
+说明列表和元组的相同点和不同点
+  相同点：元组与列表都是序列类型的容器对象，可以存放任何类型的数据、支持切片、迭代等操作。
+  不同点：两种类型除了字面上的区别(括号与方括号)之外，最重要的一点是元组是不可变类型，大小固定，而列表是可变类型、数据可以动态变化，这种差异使得两者
+  提供的方法、应用场景、性能上都有很大的区别，同样大小的数据，元组占用的内存空间更少。
+  
+请写出字符串支持的所有方法及说明
+  split(sep=None, maxsplit=-1) 将字符串按照分隔符分割成若干字符串，并返回列表
+  rsplit(sep=None, maxsplit=-1) 上面是从左往右分割，这边是从右往左分割
+  partition(sep) 从左至右，遇到分隔符就把字符串分割成两部分，返回头、分隔符、尾三部分的三元组；如果没有找到分隔符，就返回头、2个空元素的三元组
+  rpartition(sep) 上面是从左往右分割，这边是从右往左分割
+  splitlines([keepends]) 按照行来切分字符串
+  upper() 全大写
+  lower() 全小写
+  replace(old, new[, count]) 字符串中找到匹配替换为新子串，返回新字符串
+  strip([chars]) 从字符串两端去除指定的字符集chars中的所有字符，如果chars没有指定，去除两端的空白字符
+  lstrip([chars]) 上面是两端都去除，这边是左边都去除
+  rstrip([chars]) 上面是左边都去除，这边是右边都去除 
+  find(sub[, start[, end]]) 在指定的区间[start, end)，从左至右，查找子串sub。找到返回索引，没找到返回-1
+  rfind(sub[, start[, end]]) 上面是从左往右找，这边从右往左找，返回的索引和上面的一样是正索引
+  index(sub[, start[, end]]) 在指定的区间[start, end)，从左至右，查找子串sub。找到返回索引，没找到抛出异常ValueError
+  rindex(sub[, start[, end]]) 在指定的区间[start, end)，从左至右，查找子串sub。找到返回索引，没找到抛出异常ValueError
+  len(string) 返回字符串的长度
+  count(sub[, start[, end]]) 在指定的区间[start, end)，从左至右，统计子串sub出现的次数
+  endswith(suffix[, start[, end]]) 在指定的区间[start, end)，字符串是否是suffix结尾
+  startswith(prefix[, start[, end]]) 在指定的区间[start, end)，字符串是否是prefix开头
+  isalnum() 是否是字母和数字组成
+  
+l=[3, 5, 1, 7, 9, 6, 8]
+length=len(l)
+for i in range(length-1):
+    Flag=True
+    for j in range(length-i-1):
+        if l[j] > l[j+1]:
+            l[j],l[j+1]=l[j+1],l[j]
+            Flag=False
+    print(l)
+    if Flag:
+        break
+print(l)
