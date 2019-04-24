@@ -21,18 +21,18 @@
 
 	l=[1,2,3,4,3,2]
 	
-列表用法：			举例						输出								说明
-.append()		l.append(4567)			Out:l=[1,2,3,4,3,2,4567]       		尾部增加
-.sort()			l.sort()				Out:l=[1,2,2,3,3,4]					顺序排列
-.insert()		l.insert(2,4567)		Out:l=[1,2,3,4567,4,3,2]			在对应列表索引之后增加
-.extend()		l.extend(range(3))		Out:l=[1,2,3,4,3,2,0,1,2]			在列表后增加迭代对象
-.count()		l.count(2)				Out:2								计算列表内的元素相同并输出相应的个数
-.reversed()		ll=reversed(l)			out:list(ll)=[2,3,4,3,2,1]			将列表中的所有元素逆向索引输出
-.clear()		l.clear()				Out:[]								清除列表内的所有元素并输出一个空的列表
-.[]				l.[2]					Out:3								根据列表索引输出列表中相对应的内容
-list()			l=list(range(5))		Out:l=[0,1,2,3,4]					list括号内为可迭代对象
-list()			l=list('abc12')			Out:l=['a','b','c','1','2']			list括号内为字符转化为列表
-list()			list(l)					Out:[1,2,3,4,3,2]					打印相应的列表
+列表用法：        举例                 输出                          说明
+.append()    l.append(4567)       Out:l=[1,2,3,4,3,2,4567]        尾部增加
+.sort()	     l.sort()             Out:l=[1,2,2,3,3,4]             顺序排列
+.insert()    l.insert(2,4567)     Out:l=[1,2,3,4567,4,3,2]        在对应列表索引之后增加
+.extend()    l.extend(range(3))   Out:l=[1,2,3,4,3,2,0,1,2]       在列表后增加迭代对象
+.count()     l.count(2)           Out:2                           计算列表内的元素相同并输出相应的个数
+.reversed()  ll=reversed(l)       out:list(ll)=[2,3,4,3,2,1]      将列表中的所有元素逆向索引输出
+.clear()     l.clear()            Out:[]                          清除列表内的所有元素并输出一个空的列表
+.[]          l.[2]                Out:3                           根据列表索引输出列表中相对应的内容
+list()       l=list(range(5))     Out:l=[0,1,2,3,4]               list括号内为可迭代对象
+list()       l=list('abc12')      Out:l=['a','b','c','1','2']     list括号内为字符转化为列表
+list()       list(l)              Out:[1,2,3,4,3,2]               打印相应的列表
 
 4. 实现一个简易的计算器，效果如下：
     （1）. 运行后提示让用户输入一个数字
