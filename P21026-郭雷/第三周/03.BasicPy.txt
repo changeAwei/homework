@@ -1,0 +1,341 @@
+/*
+1. 说明列表的浅拷贝和深拷贝的区别
+2. 说明列表和元组的相同点和不同点
+3. 请写出字符串支持的所有方法及说明（例如: lower 返回字符串的小写）
+4. 使用选择排序算法实现排序[3, 5, 1, 7, 9, 6, 8]
+5. 有如下一个字符串变量logs，请统计出每种请求类型的数量（提示：空格分割的第2列是请求类型），得到如下输出：
+POST 2
+GET 3
+
+下边是logs变量：
+logs = '''
+111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
+111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
+111.13.100.92 "Post /mock/login/ HTTP/1.1" 200 
+223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
+111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
+''' 
+*/
+
+
+
+1. 说明列表的浅拷贝和深拷贝的区别
+个人理解：
+列表的浅拷贝:当列表中有引用（c语言中可参照理解为指针），浅拷贝使用copy函数，但复制引用时，仅复制了引用地址，未将引用所对应的内存复制。
+修改效应：修改新旧列表中的引用参数，新旧列表引用所对应的值都跟着变。
+
+列表的深拷贝：当列表中有引用（c语言中可参照理解为指针），深拷贝是使用deepcopy函数，但复制引用时，复制了引用所对应的内存
+修改效应：修改的新旧引用中的参数，新旧列表不互相影响。
+
+
+其它的参考解释：
+
+参考叶春草同学的解释：
+参考链接：
+https://github.com/magedu-python21/homework/blob/master/P21016-%E5%8F%B6%E6%98%A5%E8%8D%89/%E7%AC%AC%E4%B8%89%E5%91%A8/1_3.exercises.txt
+对于容器对象，浅拷贝只是复制了容器地址，多个对象之间的拷贝，修改一个的值，会一同修改了其他浅拷贝的对象
+深拷贝，只是复制容器里面的元素，相互之间不影响。
+
+参考小胡（明）同学的解释：
+参考链接：https://github.com/magedu-python21/homework/blob/master/P21002-%E5%B0%8F%E8%83%A1/%E7%AC%AC%E4%B8%89%E5%91%A8/doc.md
+浅拷贝可以使用列表自带的copy()函数或者copy模块的copy()函数,深拷贝只能使用copy模块的deepcopy()
+如果拷贝的对象里的元素只有值，没有引用，那浅拷贝和深拷贝没有差别，
+都会将原有对象复制一份，产生一个新对象，对新对象里的值进行修改不会影响原有对象，新对象和原对象完全分离开
+如果拷贝的对象里的元素包含引用（像一个列表里储存着另一个列表，存的就是另一个列表的引用），
+那浅拷贝和深拷贝是不同的，浅拷贝虽然将原有对象复制一份，
+但是依然保存的是引用，所以对新对象里的引用里的值进行修改，依然会改变原对象里的列表的值，新对象和原对象并没有完全分离开。
+而深拷贝则不同，它会将原对象里的引用也新创建一个，
+即新建一个列表，然后放的是新列表的引用，这样就可以将新对象和原对象完全分离开。
+
+
+
+2.说明列表和元组的相同点和不同点
+相同点:有序，可索引；可迭代
+不同点：元组一旦创建不能在原来的基础上修改,列表可变,赋值符号不同，列表中括号，元组小括号
+
+3.请写出字符串支持的所有方法及说明（例如: lower 返回字符串的小写）
+
+参考链接：
+https://www.cnblogs.com/f-ck-need-u/p/9127699.html
+
+帮助文档查看方式：print(dir(str))
+
+前言：
+	字符串函数转换后都是生产新的字符。
+	python输入的字符都默认为字符型
+
+###大小写函数####
+参数			解释							
+lowe()		返回的字符串小写
+upper()		返回的字符串大写
+swapcase()	返回字符串大小写互相转换(大写-->小写，小写-->大写)。 
+title()		返回字符串中所有单词[首字母大写]且[其他字母小写]的格式
+capitalize()	返回[首字母大写]、其他字母全部小写。
+
+####isXXX判断：对输入的字符类型更进一步判断####
+isalpha()	返回bool值，判断是否是仅是字母组成
+isdecimal()	返回bool值，判断是否是仅是十进制组成
+isdigit()	返回bool值，判断是否是仅是数字组成,能判断Unicode数字，byte数字（单字节），全角数字（双字节）
+isnumeric()	返回bool值，判断是否是仅是数字组成，能判断Unicode数字，全角数字（双字节），罗马数字，汉字数字 
+isalnum()	返回bool值，判断是否是字母和数字组成
+islower()	返回bool值，判断是否为全小写
+isupper()	返回bool值，判断是否为全大写
+istitle()	返回bool值，判断是否首字母大写
+isspace()	返回bool值，判断是否存在空格，没有任何字符不算空白
+isprintable()	返回bool值，判断是否是可打印字符，转义字符为flase
+isidentifier()	返回bool值，判断是否满足标识符定义规则（只能是字母或下划线开头、不能包含除数字、字母和下划线以外的任意字符。）
+
+####填充####
+center(width[, fillchar])	将字符串居中，左右两边使用fillchar进行填充，使得整个字符串的长度为width。
+				fillchar默认为空格。如果width小于字符串的长度，则无法填充直接返回字符串本身(不会创建新字符串对象)。
+ljust(width[, fillchar])	将字符串居左对齐，右边使用fillchar进行填充，使得整个字符串的长度为width。
+                                fillchar默认为空格。如果width小于字符串的长度，则无法填充直接返回字符串本身(不会创建新字符串对象)
+rjust(width[, fillchar])	将字符串居右对齐，左边使用fillchar进行填充，使得整个字符串的长度为width。
+				fillchar默认为空格。如果width小于字符串的长度，则无法填充直接返回字符串本身(不会创建新字符串对象)
+zfill(width)			用0填充在字符串左边，使得整个字符串的长度为width。
+				如果width小于或等于S的长度，则无法填充，直接返回S本身(不会创建新字符串对象)。
+
+####子串搜索####
+count(sub[, start[, end]])		返回字符串S中子串sub出现的次数
+					可以指定从哪里开始计算(start)以及计算到哪里结束(end),索引从0开始计算，不包括end边界。
+
+
+
+endswith(suffix[, start[, end]])	返回bool值，检查字符串S是否以suffix结尾
+					可以指定从哪里开始计算(start)以及计算到哪里结束(end),索引从0开始计算，不包括end边界。
+					返回bool值，检查字符串S是否以suffix结尾
+					print('abcxyz'.endswith(('ab','xy','z'))) is True,z满足条件
+startswith(prefix[, start[, end]])	返回bool值，检查字符串S是否以prefix开始
+                                        suffix可以是一个元组(tuple)。可以指定起始start和结尾end的搜索边界。
+					print('abcxyz'.endswith(('ab','xy','z'))) is True,ab满足条件
+
+
+find(sub[, start[, end]])	若找到，返回第一个匹配到的正索引编号,[没找到返回-1]，从左到右查找字符串中是否包含sub子串
+rfind(sub[, start[, end]])	若找到，返回第一个匹配到的正索引编号,[没找到返回-1]，从右到左查找字符串中是否包含sub子串
+index(sub[, start[, end]])	若找到，返回第一个匹配到的正索引编号,[没找到，抛出异常错误]，从左到右查找字符串中是否包含sub子串
+rindex(sub[, start[, end]])	若找到，返回第一个匹配到的正索引编号,[没找到，抛出异常错误]，从右到左查找字符串中是否包含sub子串
+in				返回bool值，可以使用in操作符来判断字符串S是否包含子串sub
+
+
+
+####子串替换####
+replace(old, new[, count])	将字符串中的子串old替换为new字符串，如果给定count，则表示只替换前count个old子串。
+				如果S中搜索不到子串old，则无法替换，直接返回字符串S(不创建新字符串对象)。
+expandtabs(N)			将字符串S中的\t替换为一定数量的空格（我个人认为这里可以理解为table建，占用多少个空格）。默认N=8。
+				在替换"\t"为空格时，会减掉"\t"前面的字符数量。如果"\t"的前面正好没有字符，则直接将"\t"替换为N个空格
+				另外，它不会替换换行符(\n或\r)。
+				例如'xyz\tab'.expandtabs()会将\t替换为5个空格，因为"xyz"占用了3个字符位。
+
+
+static_map str.maketrans(x[, y[, z]])	生产字符串的映射表，类似与字典，x,y 字符（个数）要一一对应，z所对应的字符转换为None
+					个人补充：将x,y互换位置 可生产加密/解密表
+translate(static_map)			根据str.maketrans给的映射表转换对应的字符。
+					理解的例子：
+						>>> in_str='abcxyz'
+						>>> out_str='123456'
+
+						# maketrans()生成映射表
+						>>> map_table=str.maketrans(in_str,out_str)
+
+						# 使用translate()进行映射
+						>>> my_love='I love Fairy'
+						>>> result=my_love.translate(map_table)
+						>>> print(result)
+							I love F1ir5
+
+####分割####
+
+partition(sep)		搜索字符串S中的子串sep，并从左边第一个sep处对S进行分割，最后返回一个包含3元素的元组：
+			sep左边的部分是元组的第一个元素，sep自身是元组的二个元素，sep右边是元组的第三个元素。
+rpartition(sep)		搜索字符串S中的子串sep，并从右边第一个sep处对S进行分割，最后返回一个包含3元素的元组：
+			 sep左边的部分是元组的第一个元素，sep自身是元组的二个元素，sep右边是元组的第三个元素。
+注意事项：		如果搜索不到sep，则返回的3元素元组中，有两个元素为空。
+			partition()是后两个元素为空，rpartition()是前两个元素为空。
+
+split(sep=None, maxsplit=-1)	返回是列表，从左到右依次匹配分割字符串，根据给定的maxsplit数值，进行字符串的切割
+				默认值解释：
+				sep默认值为None([空格，\n(linux的转义换行符)|\r\n（win的转义换行符）],多个连续的None，为一个sep)
+				[特别说明]如果你自定义sep，会严格按照自定义的sep来切割
+				maxsplit默认值为-1，-1代表从左到右全匹配
+				实例：
+				print('abcxy   xy\n\n\rzXY'.split())>>['abcxy', 'xy', 'zXY']
+				
+S.rsplit(sep=None, maxsplit=-1)	返回是列表，从右到左依次匹配分割字符串，根据给定的maxsplit数值，进行字符串的切割
+				默认值解释： 参照split()默认值解释
+
+S.splitlines([keepends=True])	splitlines()中可以指定各种换行符，常见的是\n、\r、\r\n。如果指定keepends为True，则保留所有的换行符。
+
+
+splitlines()与split()对比实例
+				#### split()
+						>>> ''.split('\n')
+							['']            # 因为没换行符可分割
+
+						>>> 'One line\n'.split('\n')
+							['One line', '']#保留了最后的空格
+
+				#### splitlines()
+						>>> "".splitlines()
+							[]              # 因为没有换行符可分割
+
+						>>> 'Two lines\n'.splitlines()
+ 							['Two lines']	#没有保留最后的空格
+
+####拼接join####
+
+s.join(iterable)		使用s将（iterable）可迭代的字符串类型对象拼接在一起，只能是字符串对象
+				例子：''.join(['a','b','c','d'])>>'abcd'
+
+####修剪####
+
+
+分别是移除左右两边、左边、右边的字符char。如果不指定chars或者指定为None，则默认移除空白(空格、制表符、换行符)。
+
+唯一需要注意的是，chars可以是多个字符序列。在移除时，只要是这个序列中的字符，都会被移除。
+
+
+strip(chars)			移除[左右]两边的字符chars,chars中每个字符都要匹配，匹配到不符合chars后，输出剩下的字符
+				如果不指定chars或者指定为None，则默认移除空白(空格、制表符、换行符)
+
+lstrip(chars)			移除[左]边的字符char,chars中每个字符都要匹配，匹配到不符合chars后，输出剩下的字符
+				如果不指定chars或者指定为None，则默认移除空白(空格、制表符、换行符)
+rstrip(chars)			移除[右]边的字符char,chars中每个字符都要匹配,匹配到不符合chars后，输出剩下的字符
+				如果不指定chars或者指定为None，则默认移除空白(空格、制表符、换行符)
+				列子：
+				print('www.example.com'.strip('cmowz.'))>>example
+				print('www.example.com'.lstrip('cmowz.'))>>example.com
+				print('www.example.com'.lstrip('cmowz.'))>>www.example
+####格式化####
+#参考连接https://raw.githubusercontent.com/magedu-python21/homework/master/P21055-%E5%BC%A0%E4%BA%9A%E9%BE%99/string%E7%9A%84%E6%96%B9%E6%B3%95.png
+
+join(iteratable)			string.join(iteratable)将可迭代对象连接起来，使用string作为分隔符
++					附加+也可将字符串连接起来
+“{}{xxx}”.format(*args,**kwargs)	通过format函数，将n个字符串拼接起来，并按照指定的字符串样式输出
+补充说明:
+*args					可变位置参数，是tuple
+**kwargs				是可变关键字参数，是dict
+{}					是占位符
+{xxx}					按关键字名称匹配参数，搜索的关键字名称需要和参数关键字名称一致
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.使用选择排序算法实现排序[3, 5, 1, 7, 9, 6, 8]
+
+####代码开始####
+a = [3,5,1,7,9,6,8,5,6,7]
+for i in range(len(a)-1):
+    for j in range(i+1,len(a)):
+        if a[i]<a[j]:
+            a[i],a[j]=a[j],a[i]
+print(a)
+
+####代码结束####
+
+
+5. 有如下一个字符串变量logs，请统计出每种请求类型的数量（提示：空格分割的第2列是请求类型），得到
+如下输出：
+POST 2
+GET 3
+
+下边是logs变量：
+logs = '''
+111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
+111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
+111.13.100.92 "Post /mock/login/ HTTP/1.1" 200 
+223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
+111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
+'''
+####代码开始####
+
+
+logs='''
+111.30.144.7 "POST /mock/login/?t=GET HTTP/1.1" 200 
+111.30.144.7 "Get /mock/users/?t=POST HTTP/1.1" 200 
+111.13.100.92 "Post /mock/login/ HTTP/1.1" 200 
+223.88.60.88 "GET /mock/users/?t=POST HTTP/1.1" 200 
+111.30.144.7 "GET /mock/users/ HTTP/1.1" 200 
+'''
+####子串搜索####
+##HTTP/URL 操作方式 基础知识##
+# HTTP协议中共定义了八种方法或者叫“动作”来表明对Request-URI指定的资源的不同操作方式，具体介绍如下： 
+
+# OPTIONS：返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送'*'的请求来测试服务器的功能性。 
+# HEAD：向服务器索要与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以在不必传输整个响应内容的情况下，就可以获取包含在响应消息头中的元信息。 
+# GET：向特定的资源发出请求。 
+# POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的创建和/或已有资源的修改。 
+# PUT：向指定资源位置上传其最新内容。 
+# DELETE：请求服务器删除Request-URI所标识的资源。 
+# TRACE：回显服务器收到的请求，主要用于测试或诊断。 
+# CONNECT：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
+
+#    虽然HTTP的请求方式有8种，但是我们在实际应用中常用的也就是get和post，其他请求方式也都可以通过这两种方式间接的来实现。
+#https://www.cnblogs.com/web100/p/http-8-request.html    
+#开辟8个HTTP请求方法的列表
+a=["POST","GET","HEAD","PUT","OPTIONS","DELETE","TRACE","CONNECT"]
+#开辟8个请求方法类表的初始值
+b=[0,0,0,0,0,0,0,0]
+#准备一个接受切割后的字符容器
+c=[None]
+#对待处理字符串，全大写，并分割字符串为列表
+list_c =logs.upper().split()
+#计算承接容器的长度
+length=int(len(list_c)/5)
+#开启固定长度的容器
+c=c*length
+
+#获取感兴趣的参数
+for x in range(length):
+    #这里刚好有个规律，1+5n处刚好是我想要的初始数据，用字符串切割lstrip把多余的部分去掉
+    c[x]=((list_c[1+5*x]).lstrip('"') )
+#这个输出核查一下是否是自己想要的数据
+#print(c)
+
+#这里统计一下每个方法的次数
+for i in range(8):
+    for j in range(length):
+         if a[i]==c[j]:
+                b[i]+=1
+    #借助for循环打印我想要的输出的信息
+    if b[i]!=0:
+        print(a[i],b[i])
+####代码结束###
+
+
+####个人补充知识####
+6.小议Python列表和元组中的元素地址连续性
+
+参考链接：http://www.10tiao.com/html/383/201703/2247484232/1.html
+众所周知，在Python中字典和集合依赖元素哈希表来存储，并不存在传统意义上的所谓元素“顺序”
+当然，如果需要一个有序的字典可以使用collections模块提供的OrderedDict类。
+
+在Python中，列表和元组属于有序序列，支持下标随机访问，也支持切片操作。
+当然，列表是可变序列而元组属于不可变序列，这一点决定了它们之间有很大不同。
+
+今天的话题是列表和元组中的元素到底是不是连续存储的。
+了解C语言的朋友都知道，数组是连续存储的，所以可以下标来直接访问其中任意位置上的元素。
+而Head First Python戏称列表是“打了激素的列表”，又说元组是”轻量级的列表“，这样的说法仅仅是说列表比数组的功能强大很多吗？
+其实不是的，Python列表和C语言中数组在实现上也有很大区别，当然这是Python和C的内核与设计理念不同造成的。
+
+在Python中，变量并不直接存储值，而是存储值的引用。
+也就是说，x=3这样一个语句执行的过程实际上是先把数字3放入内存合适位置，然后再让变量x引用这个地址（类似于指针）。
+这一点同样适用于任何类型的变量，也适用于列表或元组中的元素。
+也就是说，列表或元组中的元素实际上存储的是值的引用，而不是直接存储值。
+
+因此，说列表或元组中元素是连续存储或不连续存储都是有道理的。
+列表中的元素是连续存储的，所以支持下标操作和切片，但这些元素引用的地址却在绝大多数情况下是不连续的。
+
