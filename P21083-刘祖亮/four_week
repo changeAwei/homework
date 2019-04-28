@@ -1,0 +1,125 @@
+1. 什么是杨辉三角和转置矩阵（文字说明即可）？
+杨辉三角：是二项式系数在三角形中的一种几何排列，每个数等于它上方两数之和。第n行的m个数可表示为 C(n-1，m-1)
+转置矩阵：将矩阵的行列互换得到的新矩阵称为转置矩阵，转置矩阵的行列式不变。
+2. 说明列表和Set集合的相同点和不同点。
+列表：有序的、可变的集合，列表元素不可hash，元素可索引，可迭代
+集合：可变的、无序的、不重复的集合，set元素必须可hash，set元素不可索引，可迭代
+
+3. 请写出Set集合支持的所有方法及说明（例如：add 向Set集合中添加一个元素）
+set.add(elem)  					#增加一个元素到set中
+set.update(*others)				#合并其他元素到set集合中来，others必须是可迭代对象
+set.remove(elem)				#从set中移除一个元素，如果元素不存在，抛出KeyError
+set.discard(elem)				#从set中移除一个元素，如果元素不存在，什么都不做
+set.pop()						#移除并返回任意的元素，空集返回KeyError
+set.clear()						#移除所有元素
+
+
+4. 请写出字典支持的所有方法及说明（例如：pop 从字典中移除指定的key并返回其value）
+#字典初始化
+d = dict() 或者d = {} 			#定义空字典
+dict(**kwargs)					#使用name=value对初始化一个字典
+dict(iterable,**kwargs)			#使用可迭代对象和name=value对构造字典，可迭代对象的元素必须是二元结构
+dict(mapping,**kwargs)			#使用一个字典构造另一个字典
+#字典元素的访问
+d[key]							#返回key对应的值value，key不存在抛出KeyError异常
+get(key[,default])				#返回key对应的值value，key不存在不抛异常，缺省值为None
+setdefault(key[,default])		#返回key对应的值value，key不存在不抛异常，缺省值为None
+#字典的增加和修改
+d[key] = value					#将key对应的值修改为value，key不存在就添加新的kv对
+update([other])					#使用另一个字典的kv对更新本字典，key不存在就添加，key存在就修改对应的值
+#字典删除
+pop(key[,default])				#key存在就移除key，返回它的value，key不存在，返回给定的default。default未设定，key不存在则抛出KeyError异常
+popitem()						#移除并返回一个任意的键值对,字典为empty，抛出KeyError异常
+clear()							#清空字典
+del语句							#本质上减少了一个对象引用，删除的是对象名称
+#字典遍历
+for ... in dict					#遍历key
+for item in d.items()			#遍历item，即kv对
+
+5. 请写出Python内建函数及说明（参考：https://docs.python.org/3/library/functions.html）
+abs(x)						#返回数字的绝对值
+all(iterable)				#如果所有元素是可迭代的，返回True
+any(iterable)				#如果有元素是可迭代的，返回True。没有可迭代的元素，返回False
+ascii(object)				#返回一个字符串对象
+bin(x)						#将整数转换为前缀为“0b”的二进制字符串
+class bool([x])				#返回一个布尔值，即True或False。
+breakpoint(*args, **kws)
+class bytearray([source[, encoding[, errors]]])		#返回一个新的字节数组
+class bytes([source[, encoding[, errors]]])			#返回一个新的“bytes”对象，它是一个范围为0 <= x < 256的不可变整数序列。
+callable(object)									#如果对象参数显示为可调用，则返回True;如果不可调用，则返回False。
+chr(i)												#返回表示Unicode编码点为整数i的字符的字符串。
+@classmethod										#将方法转换为类方法。
+compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1)  #将源代码编译为代码或AST对象。
+class complex([real[, imag]])						#返回值为real + imag*1j的复数，或将字符串或数字转换为复数。
+delattr(object, name)								#这是setattr()的一个相对项。如果对象允许，函数将删除named属性
+class dict(**kwarg)									#创建一个新字典。
+class dict(mapping, **kwarg)						#创建一个新字典。
+class dict(iterable, **kwarg)						#创建一个新字典。
+dir([object])										#如果没有参数，返回当前局部作用域中的名称列表。使用参数时，尝试返回该对象的有效属性列表。
+divmod												#以两个(非复数)数作为参数，在使用整数除法时返回由它们的商和余数组成的一对数。
+enumerate(iterable, start=0)						#enumerate()返回的迭代器的_next__()方法返回一个包含count(从默认值为0开始)的元组，以及在iterable上迭代得到的值。
+eval(expression, globals=None, locals=None)			#返回值是求值表达式的结果
+exec(object[, globals[, locals]])					#
+filter(function, iterable)							#从函数返回true的iterable元素构造一个迭代器。
+class float([x])									#返回由数字或字符串x构造的浮点数。
+format(value[, format_spec])						#将值转换为由format_spec控制的“格式化”表示形式。
+class frozenset([iterable])							#返回一个新的frozenset对象，可选地使用iterable中的元素
+getattr(object, name[, default])					#返回对象的命名属性的值。
+globals()											#返回表示当前全局符号表的字典。
+hasattr(object, name)								#参数是一个对象和一个字符串。如果字符串是对象属性之一的名称，则结果为True，如果不是，则为False
+hash(object)										#返回对象的哈希值(如果它有哈希值)。
+help([object])										#调用内置的帮助系统。
+hex(x)												#将整数转换为以“0x”为前缀的小写十六进制字符串
+id(object)											#返回对象的“标识”。是一个整数
+input([prompt])										#获取用户输入，返回字符串
+class int([x])										#返回一个由数字或字符串x构造的整数对象，如果没有给出参数，则返回0
+class int(x, base=10)								#
+isinstance(object, classinfo)						#如果对象参数是classinfo参数的实例，或其子类的实例(直接、间接或虚拟)，则返回true。否则返回False
+issubclass(class, classinfo)						#如果类是classinfo的子类(直接、间接或虚拟)，则返回true。
+iter(object[, sentinel])							#返回一个迭代器对象。
+len(s)												#返回对象的长度(项的数量)。
+class list([iterable])								#一个可变的序列类型
+locals()											#更新并返回表示当前本地符号表的字典。						
+map(function, iterable, ...)						#返回一个迭代器，该迭代器将函数应用于iterable的每一项，生成结果。
+max(iterable, *[, key, default])					#
+max(arg1, arg2, *args[, key])						#返回可迭代的或两个或多个参数中最大的项。
+memoryview(obj)										#返回从给定参数创建的“内存视图”对象。
+min(iterable, *[, key, default])					#	
+min(arg1, arg2, *args[, key])						#返回可迭代的或两个或多个参数中最小的项。
+next(iterator[, default])							#通过调用迭代器的_next__()方法从迭代器中检索下一项
+class object										#返回一个新的无特征对象。
+oct(x)												#将整数转换为前缀为“0o”的八进制字符串。
+open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None) #打开文件
+ord(c)												#给定一个表示一个Unicode字符的字符串，返回一个表示该字符的Unicode编码点的整数。
+pow(x, y[, z])										#返回x的y次方;如果存在z，则将x返回到y的模z次方(计算效率比pow(x, y) % z更高)。
+print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)	#将对象打印到文本流文件中，以sep分隔，后跟end。sep、end、file和flush(如果存在)必须作为关键字参数给出。
+class property(fget=None, fset=None, fdel=None, doc=None)			#返回一个属性
+range(stop)											#
+range(start, stop[, step])							#
+repr(object)										#返回包含对象可打印表示形式的字符串
+reversed(seq)										#返回一个反向迭代器。
+round(number[, ndigits])							#返回小数点后四舍五入到ndigits精度的数字。
+class set([iterable])								#返回一个新的set对象，可选地使用iterable中的元素。
+setattr(object, name, value)						#这是getattr()的对应项。
+class slice(stop)¶									#
+class slice(start, stop[, step])					#返回一个切片对象，该对象表示range(start、stop、step)指定的一组索引。
+sorted(iterable, *, key=None, reverse=False)		#从iterable中的项返回一个新的排序列表。
+@staticmethod										#将方法转换为静态方法。
+class str(object='')								#返回对象的str版本
+class str(object=b'', encoding='utf-8', errors='strict')			#
+sum(iterable[, start])								#返回和
+super([type[, object-or-type]])						#返回一个代理对象，该对象将方法调用委托给类型的父类或同级类。
+tuple([iterable])									#元组
+class type(object)									#
+class type(name, bases, dict)						#使用一个参数，返回对象的类型。
+vars([object])										#返回模块、类、实例或任何其他具有* * *属性的对象的* * *属性。
+zip(*iterables)3									#创建一个迭代器，它聚合来自每个迭代器的元素。
+__import__(name, globals=None, locals=None, fromlist=(), level=0)  #高级函数，不鼓励使用
+	
+
+
+
+
+
+
+
