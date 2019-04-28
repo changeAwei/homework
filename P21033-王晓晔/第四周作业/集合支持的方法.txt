@@ -1,0 +1,21 @@
+add()：  	                为集合添加元素
+update()：	                给集合添加元素
+pop()： 	                随机移除元素
+remove()：	                移除指定元素
+clear()： 	                移除集合中的所有元素
+copy()：	                拷贝一个集合
+discard()：     	        删除集合中指定的元素
+union(*others)：	                返回多个集合的并集
+update(*others)：	                得到多个集合的并集，就地修改
+intersection(*others)：	                返回多个集合的交集
+intersection_update(*others)：	        得到多个集合的交集，就地修改
+difference(*others)：   	        返回多个集合的差集
+difference_update(*others)：	        得到多个集合的差集，就地修改
+symmetric_difference(other)：           返回两个集合的对称差集
+symmetric_difference_update(other)：	得到两个集合的对称差集，就地修改
+isdisjoint()：	               判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False。
+issubset()：	               判断指定集合是否为该方法参数集合的子集。
+issuperset()：	               判断该方法的参数集合是否为指定集合的子集
+
+
+
