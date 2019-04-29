@@ -1,0 +1,73 @@
+set定义初始化
+set() 返回新set对象
+set(iterable) 返回新set对象
+example
+s1 =  set()
+s2 = set(range(5)) -> {0, 1, 2, 3, 4}
+
+set增加
+add（）
+ 增加一个元素到set中
+ 如果元素存在什么都不做
+example
+s2.add(5) -> {0, 1, 2, 3, 4, 5}
+s2.add(3) -> {0, 1, 2, 3, 4, 5}
+update（*others）
+ 合并其他元素到set集合中来
+ 参数others必须是可迭代对象
+ 就地修改
+s1 = {(1,2,),'abc',55} -> {(1, 2), 55, 'abc'}
+s2.add(5) -> {0, 1, 2, 3, 4, 5}
+s2.update(s1) -> {(1, 2), 0, 1, 2, 3, 4, 5, 55, 'abc'}
+
+set删除
+remove(elem)
+从set中移除一个元素
+元素不存在，抛出keyerror异常
+s2.remove(3) -> {(1, 2), 0, 1, 2, 4, 5, 55, 'abc'}
+s2.remove(22) ->KeyError: 22
+discard(elem)
+从set中移除一个元素
+元素不存在，什么都不做
+
+pop() -> item
+移除并返回任意的元素
+空集合返回keyerror
+
+clear()
+移除所有元素
+
+set修改、查询
+set要么加入新元素、要么删除、
+查询
+非线性结构，无法缩影
+遍历
+可以迭代所有元素
+成员运算符
+in和not in 判断元素是否在set中
+
+集合运算符：
+全集
+子集和超集（<=和>=）
+真子集和真超集(<和>)
+并集（多个集合合并的结果）、交集（多个集合的公共的部分）、差集（集合中除去和其他集合公共的部分）
+并集：
+| 等同于union 合并后返回新集合、update（*others）等同于 |= 多个集合合并就地修改
+交集： 
+intersection（*others）等同于& 返回新集合 ，intersection_update(*others)等同于&= 就地修改
+差集：
+difference（*others）等同于-返回新集合，difference_update(*others)等同于-=就地修改
+对称差集：
+symmetric_diffrence（other）等同^,symmetric_diffrence_update(*others)等同^=
+issubset(other) <=
+判断当前集合是否是另一个集合的子集
+set1 < set2 
+判断set1是否是set2真子集
+issuperset（other） >=
+判断当前集合是否是other的超集合
+set1> set2
+判断是否是真超级
+isdisjoint（other）
+当前集合和另一个集合没有交集
+没有交集返回true
+

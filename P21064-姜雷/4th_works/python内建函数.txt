@@ -1,0 +1,166 @@
+写出Python内建函数及说明
+
+abs(x) 返回数字x的绝对值
+
+all(iterable) 判断可迭代对象的所有元素是否等效于True,如果全部等效于True或者对象为空就返回True
+
+any(iterable) 判断可迭代对象的任意一元素是否等效于True.如果存在元素等效于True就返回True
+
+ascii(object)  返回一个对象的字符串表达;但是非ascii码字符会使用\x,\u进行转义
+
+bin(x) 将整型数x转换成二进制字符串.如果对象不是整型数,需要自定义__index__()方法
+
+bool(x) 返回对象x的布尔值.如果对象定义了__bool__()方法,调用该方法;如果没有__bool__(),会尝试调用__len__()方法.
+        当长度大于0时为真.如果上面两个方法都没有定义,结果一定为真
+
+breakpoint()  该函数用于调试,中断当前程序并进入 pdb 调试器。
+
+bytearray([ source [，encoding [，errors ] ] ] )  将对象转换成bytearray类型
+
+bytes([ source [，encoding [，errors ] ] ] ) 将对象转换成bytes类型
+
+callable(object) 判断对象是否可调用.如果对象的类定义了__call__()方法,则对象是可调用的
+
+chr(i) 返回数字对应的字符串.
+
+classmethod  该方法是一个装饰器,将方法转换为类方法
+
+compile(source,filename,mode,flags=0) 将源代码编译,生成字节码或者AST,用于被exec()执行或者eval()继续编译 
+
+complex([ real [,imag ] ]) 返回复数
+
+delattr(object,name) 删除对象的属性name,name必须是对象属性的字符串名称
+
+dict()  创建一个新的字典
+
+dir()  返回类或对象的所有属性的名称列表
+
+divmod(a,b) 取两个非复数,返回其商和余数组成的二元组
+
+enumerate(iterable,start=0) 返回一个枚举对象
+
+eval() 计算指定表达式的值,只对单个表达式有效
+
+exec() 动态执行复杂的python代码,返回值为None
+
+filter(func,iterable) 将可迭代对象所有元素代入到函数func中,过滤出使func为真的那些元素构成的迭代器
+
+float(x) 返回由数字或者字符串x构造的浮点数
+
+format(value[,format_spec]) 将值转换为格式化表示
+
+frozenset([iterable]) 返回一个新的frozenset对象,即新的不可变集合
+
+geattr(object,name[,default]) 返回对象的name属性的值,name是对象的属性的名称字符串
+
+globals() 返回当前全局作用域中所有可直接访问的变量,以字典的方式
+
+hasattr(object,name) 判断对象是否拥有属性name,如果name是对象的属性名称字符串,则返回True
+
+hash(object) 返回对象的hash值,会调用对象的类的__hash__()方法
+
+help() 返回相关帮助说明
+
+hex(x) 返回待遇前缀0x的小写十六进制字符串
+
+id() 返回对象的标识,在cpyhon中即返回对象的内存地址
+
+input() 以字符串的方式获取用户输入
+
+int(x) 将数字或字符串x转换成整数对象
+
+isinstance(object,classinfo) 判断对象是否是类class的实例,如果是class或其子类的实例则返回True
+
+issubclass(class,classinfo) 判断是类是否是另一个类的子类.
+
+iter() 返回一个迭代器对象
+
+len() 返回对象的长度
+
+list()  转换成列表,本质是类list的实例化
+
+locals() 返回当前作用域的可直接访问变量,以字典的形式
+
+map(func,iterable)  将可迭代对象的值以传参的方式按照函数func进行映射,返回新的可迭代对象
+
+max() 返回多个参数中的最大项或者可迭代对象中元素的最大项
+
+max() 返回多个参数中的最小项或者可迭代对象中元素的最小项
+
+memoryvie(obj)返回从给定参数创建的内存视图对象
+
+next(iterable[,default]) 从迭代器中取出下一个元素
+
+object() 返回一个新的无特征对象
+
+oct(x) 将整数转换成前缀为0o的八进制字符串
+
+open() 打开文件并返回相应的文件对象
+
+ord(c) 将字符转换成整数
+
+pow(x,y) 取幂运算
+
+print() 将对象打印到文本流文件,或标准输出
+
+property() 通常用作类的属性装饰器,将类中定义的实例方法变成同名的属性
+
+range()  返回一个不可变的序列类型
+
+repr()  返回对象的字符串表达形式
+
+reversed(seq) 返回反向迭代器
+
+round(x) 四舍六入五取整
+
+set(iterable)  返回一个可迭代对象所有元素组成的set实例
+
+setattr(object,name,value) 给对象设置一个属性,字符串名称为name,值为value
+
+slice(start,stop[,step]) 返回切片对象,用于切片操作的参数传递
+
+sorted() 将可迭代对象排序,返回新的排序序列
+
+staticmethod  一个装饰器,在类的定义中将方法转换为静态方法
+
+str()  返回一个字符串实例
+
+sum(iterable[,start]) 将可迭代对象依次求和,返回总数
+
+super([type[,object-or-bype]]) 返回父类的代理对象
+
+tuple() 返回一个元祖实例
+
+type() 返回对象的类型
+
+vars(object) 返回对象的__dict__属性
+
+zip(*iterables) 依次取出每个迭代器的元素组成元祖,返回所有元祖构成的新迭代器
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

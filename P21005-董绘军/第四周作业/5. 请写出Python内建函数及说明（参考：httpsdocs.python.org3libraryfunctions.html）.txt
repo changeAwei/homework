@@ -1,0 +1,28 @@
+abs（x）取绝对值
+all（iterable）如果iterable中的所有元素为true则返回true否则返回false
+any（iterable）如果iteralbe中有任意一个元素为true则返回true
+bin（33）将整数转换为前缀为“0b”的二进制字符串。
+bool（[x]）判断（）中的元素bool值
+max()返回最大值
+min()返回最小值
+round（）四舍六入5取偶
+pow（x，y）等价于x**y
+range（stop）从0开始到stop -1的可迭代对象
+divmod（x,y）等价于 tuple（x//y，x%y）
+sum（iterable[,start]）对可迭代对象的所有数值元素求和
+id 返回对象的唯一标识，cpython返回内存地址
+hash（）返回一个对象的hash值
+type（）返回对象的类型
+float（）,int(),bin(),hex(),oct()类型转换
+input（）接收用户输入，返回一个字符串
+print（）打印输出
+len（）返回一个集合类型的元素个数
+isinstance(obj，class_or_tuple)判断对象obj是否属于某种类型或者元组中列出的某个类型
+issubclass(cls,class_or_tuple)判断类型cls是否是某种类型的子类或元组中列出的某个类型的子类
+chr（i）给一个一定范围的整数返回对应的字符
+ord（c）返回字符对应的整数
+sorted（）排序
+reversed（seq）返回一个翻转元素的迭代器
+enumerate（seq，start=0）迭代一个序列，返回索引数字和元素构成的二元组，start表示索引开始的数字
+iter（iterable）将一个可迭代对象封装成一个迭代器、next（iterable），对一个迭代器取下一个元素
+zip拉链函数zip（*iterable）像拉链一样，把多个可迭代对象合并在一起，返回一个迭代器

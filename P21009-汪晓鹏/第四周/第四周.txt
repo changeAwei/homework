@@ -1,0 +1,116 @@
+1. 什么是杨辉三角和转置矩阵（文字说明即可）？
+杨辉三角：是二项式系数在三角形中的一种几何排列。第n行有n项，每行数字左右对称，从两边固定的1像中间变大，且每个数字是三角形中自身上方的两个数之和。
+转置矩阵：将矩阵的行和列互换，得到的新矩阵称为转置矩阵。
+
+2. 说明列表和Set集合的相同点和不同点。
+相同点：列表和set集合都是可变的，可迭代的数据结构类型。
+不同点：列表是有序的，元素可重复、可索引，set集合的元素存储是无序的，不可索引，并且相同的元素只能存在一个，有去重的作用，根据hash值计算存储地址，所以遍历起来非常高效。
+
+3. 请写出Set集合支持的所有方法及说明（例如：add 向Set集合中添加一个元素）
+add 		向Set集合中添加一个元素
+update		合并其它可迭代对象中的元素到set集合中
+remove		从set中移除一个元素，元素不存在抛KeyError异常（set的remove代价比列表小很多）
+discard		从set中移除一个元素，元素不存在什么都不做
+pop		移除并返回（弹出）随机一个元素，因为是无序的，所以不确定弹出的是哪个元素。空集返回KeyError异常
+clear		移除所有元素
+union		返回和多个集合合并后的新集合
+intersection	返回和多个集合的交集
+intersection_update	获取和多个集合的交集，并就地修改
+difference		返回和多个集合的差集
+difference	_update	获取和多个集合的差集并就地修改
+symmetric_differece	 返回和另一个集合的对称差集
+symmetric_differece_update 获取和另一个集合的对称差集并就地修改
+issubset		判断当前集合是否另一个集合的子集
+set1<set2		判断set1是否set2的的真子集
+issuperset		判断当前集合是否是另一个集合的超级
+set1>set2		判断set1是否是set2的真超集
+isdisjoint		判断当前集合和另一个集合没有交集
+
+4. 请写出字典支持的所有方法及说明（例如：pop 从字典中移除指定的key并返回其value）
+dic[key]		返回key对应的值value，key不存在则抛异常
+dic[key]=value	将key对应的值修改为Value，key不存在则添加新的kv对
+get		返回key对应的值value，key不存在则返回缺省值，没有缺省值就返回None
+setdefault		返回key对应的值value，key不存在则添加kv对，value设为缺省值并返回，没有设置缺省值则为None
+update		使用另一个字典更新当前字典，key不存在就添加，存在就覆盖对应的值
+pop		移除key对应的kv对，并返回value，如果key不存在返回缺省值，缺省值没设置则抛异常
+popitem		移除并返回一个任意的kv对，当字典为空的hi后，抛异常
+clear		清空字典
+keys		生成器的方式返回字典中所有的key
+values		生成器的方式返回字典中所有的value
+items		生成器的方式返回字典中所有的kv对
+
+
+5. 请写出Python内建函数及说明（参考：https://docs.python.org/3/library/functions.html）
+abs()			求绝对值
+all()			判断可迭代对象的所有元素是否都是true
+any()			判断可迭代对象的所有元素是否都是False
+ascii()			返回一个表示对象的字符串, 但是对于字符串中的非 ASCII 字符则返回通过 repr() 函数使用 \x, \u 或 \U 编码的字符。 
+bin()			将整数转换为二进制字符串
+bool()			返回一个布尔值
+breakpoint()		函数被调用时，让执行切换到调试器。
+bytearray()		返回一个可变bytes
+bytes()			返回一个bytes
+callable()			如果对象参数是可调用的，则返回True，否则返回false
+chr()			返回整数对应的ASCII字符
+classmethod()		修饰符，对应的函数不需要实例化，不需要 self 参数，但第一个参数需要是表示自身类的 cls 参数，可以来调用类的属性，类的方法，实例化对象等。
+compile()			将源代码编译为代码或AST对象，代码对象可以由exec()或val()执行
+complex()			用于创建或转换一个字符串或整数为一个复数
+delattr()			删除对象名为name的属性
+dict()			创建一个字典
+dir()			如果没有参数,则返回当前本地范围中的名称列表。如果有参数，返回该对象的有效属性列表
+divmod()			分别取商和取余
+enumerate()		返回可枚举对象
+eval()			计算表达式的值
+exec()			执行储存在字符串或文件中的Python语句
+filter()			用于过滤序列，过滤掉不符合条件的元素，返回一个迭代器对象
+float()			将一个字符串或数转换为浮点数
+format()			格式化输出字符串
+frozenset()		创建一个不可变的集合
+getattr()			获取一个类的属性
+globals()			返回一个全局变量的字典
+hasattr()			判断对象是否包含名为name的特性
+hash()			如果对象为哈希表类型，返回对象的哈希值
+help()			查看函数或模块详细说明
+hex()			将整数转换为16进制字符串
+id()			返回对象的唯一标识
+input()			接受一个标准输入数据，返回为 string 类型
+int() 			将一个字符转换为整数型类型
+isinstance()		判断对象是否是指定对象的实例
+issubclass()		判断是否是子类
+iter()			生成一个对象的迭代器
+len()			返回集合长度
+list() 			创建一个列表
+locals() 			返回当前的变量列表
+map()			遍历每个元素，执行function操作
+max()			返回集合中的最大值
+memoryview()		函数返回给定参数的内存查看对象(Momory view)。
+min()			返回集合中的最小值
+next()			返回迭代器的下一项
+object() 			基类	
+oct()			将一个数字转化为8进制
+open() 			打开文件
+ord()			以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值
+pow()	 		幂函数，返回x的y次幂
+print()			打印函数
+property() 		属性访问的包装类，设置后可以通过c.x=value等来访问setter和getter
+range()		 	产生一个可迭代序列，默认从0开始
+repr() 			将一个对象变幻为可打印的格式
+reversed()		将序列反转并返回一个迭代器
+round()			四舍五入
+set()			创建一个集合
+setattr()			设置属性值
+slice()			返回表示由范围（start，stop，step）指定的一组索引的切片对象。
+sorted()			从可迭代对象返回一个新的排序列表
+staticmethod		声明静态方法，是个注解
+str()			创建一个字符串
+sum()			对集合求和
+super()			引用父类
+tuple()			创建一个元组
+type()			返回对象的类型
+vars()			返回对象的变量，若无参数与dict()方法类似
+zip()			用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，并组成列表返回
+__import__()		用于动态加载类和函数
+
+
+
+

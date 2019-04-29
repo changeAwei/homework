@@ -1,0 +1,100 @@
+1.float(object)
+     转换为浮点数
+2.int(object,base=10)
+     转换为整数，带小数时向下取整运算. 字符串时指定base可指定传入字符的进制,默认10.
+3.long(object)
+     转换为长整形数
+4.str(object)
+     转换为字符串(1000L->1000)
+5.repr(object)
+     返回值为适合机读的字符串形式(1000L->1000L)
+6.ord(‘char’)	
+     将某单字符转成字母顺序值（单字符包括\n等）
+7.chr(num)
+     将字母顺序值转为某单字符（0~255）
+8.unichr(num)
+     将字母顺序值转为某unicode单字符（0~65535）
+9.unicode(var,codec)
+     将变量按codec转为unicode型(前面加了个u)=str.decode(codec)
+10.abs(number)
+     返回绝对值
+11.cmath.sqrt(number)
+     可带虚数均方根
+12.math.ceil(number)
+     返回数的上入整数，返回值为浮点数
+13.math.floor(number)
+     返回数的下舍整数，返回值为浮点数
+14.math.sqrt(number)
+     计算平方根，需为实数，返回浮点数
+15.pow(x, y[, z])
+     返回x的y次幂，（所得结果对z取模），类型数相关
+16.round(number[, ndigits])
+     根据给定精度进行四舍五入,返回float
+17.complex(real, img)
+     创建出复数，返回复数。
+18.input(prompt)
+     获取用户输入，须合法的python表达式：”字符”
+19.raw_input(prompt)
+     获取用户输入，返回字符串
+20.help([object])
+     交互式帮助
+21.id(obj)
+     返回对象的id
+22.cmp(x, y)
+     比较xy的值大小，相同0前大1后大-1。
+23.len(seq)
+     返回序列的长度（元素个数）,或者字典的项数int。
+24.list(seq)
+     序列（字符串）转换为列表。
+25.tuple(seq)
+     把序列转为元组（包括列表、元组、字符串均可）
+26.bool(‘any’)
+     将任意转成布尔型，除了False的特殊值，其余均真。一般不需显式说明
+27.max(args)
+     返回序列或参数集合中最大值,多于一个序列时，比较第一个，迭代。
+28.min(args)
+     返回序列或参数集合中最小值,多于一个序列时，比较第一个，迭代。
+29.sum(sqe[,start])
+     求序列之和。start参数为起始值，用于复合使用。
+30.reversed(seq)
+     序列反向迭代
+31.sorted(seq)
+     返回A已排序的列表，不改变A的顺序。
+32.string.Template(’a’)
+     模板字符串，结合$x和A.substitute(x=’a’)使用
+33.string.capwords(‘str’)
+     词首字母大写，较好，返回字符串
+34.string.maketrans(‘ab’,’cd’)
+     将256位字符表中a和b相应换成c和d，返回字符串.用于translate方法。
+35.range([x,]y[,z])
+     产生整形列表,x起y终z步长,默认x=0,z=1.常用在for语句中.切记y终点在列表外
+36.xrange([x,]y[,z])
+     类似于range但是更简洁,用于迭代用
+37.zip(seqA,SeqB….)
+     多个序列(包括元组字符串)的项组成一个元组并返回列表,最短序列决定列表长(舍去).
+38.filter(func,list)
+     对list元素都执行func,如返回True则保留,否则被过滤掉.
+39.map(func,list)
+     对list元素都执行func,并返回对应的list
+40.reduce(func,seq[,init])
+     init默认第一项,把该项和后一项传递给func,返回的结果再和下一项扔给func,直到结束
+41.enumerate(iter)
+     对可迭代对象所有项迭代索引,项目对。如用于编号迭代。返回迭代对象
+42.eval(exp[,global[,local]])	
+     会计算表达式exp的值,并返回结果.eval(raw_input(…))等于input(..).可用两个命名空间。
+43.set(seq)
+     返回([…])的集合,无重复元素的.seq可为字符串,元组,列表.
+44.type(var)
+     返回变量类型,type(‘a’)==str 返回True
+45.vars()
+     返回当前局部变量
+46.callable(obj)
+     检查对象是否可调用,可调用返回True
+47.help(module[.func])
+     查看模组帮助
+48.lambda x: 含x表达
+     就是对x进行表达式中的运作,返回函数对象lambda.用法a=lambda x:x*2+3 执行a(5).
+49.dir([obj])
+     列出obj的所含标识符(函数,类,变量,模块),不加参数针对当前模块
+50.isinstance(var, type)
+     可以比较两个参数项类型是否相同
