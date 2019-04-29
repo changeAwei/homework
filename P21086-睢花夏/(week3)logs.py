@@ -8,5 +8,6 @@ logs = '''
 log1 = logs.replace('Get','GET')
 log2 = log1.replace('Post','POST')
 log3 = log2.split()
-print('POST',log3.count('"POST'))
-print('GET',log3.count('"GET'))
+#print('POST',log3.count('"POST'))
+#print('GET',log3.count('"GET'))
+print(' POST {} \n GET {}'.format(log3.count('"POST'),log3.count('"GET')))

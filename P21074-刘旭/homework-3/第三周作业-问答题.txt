@@ -1,0 +1,48 @@
+第三周作业：
+1. 说明列表的浅拷贝和深拷贝的区别
+浅拷贝只是拷贝了引用类型，改变复杂类型的内容，原列表的内容也会，
+深拷贝后复杂类型的地址与原内容的地址是相互独立，改变拷贝对象的内容不影响列表的内容。
+2. 说明列表和元组的相同点和不同点
+列表与元组都是若干元素组成的有序集合，且都支持使用索引访问
+不同的是列表是可变的，支持增删改查，元组是不可变的、只读的没有增、改、删方法。
+3. 请写出字符串支持的所有方法及说明（例如: lower 返回字符串的小写）
+len(string)返回字符串的长度
+lower(string)转换字符串种大写字母为小写
+upper()转换字符串中小写字母为大写
+swapcase()字符串中大小写交互
+capitalize()字符串首字母大写，其他小写
+title()每个单词的首字母大写
+center(width, fillchar)返回一个指定宽度的居中字符串，fillchar为填充字符，默认空格填充
+ljust(width[, fillchar])返回一个指定宽度的左对齐字符串，fillchar为填充字符，默认空格填充
+rjust(width[, fillchar])返回一个指定宽度的右对齐字符串，fillchar为填充字符，默认空格填充
+zfill(width)返回一个长度为width的字符串，原字符串右对齐，前面补0
+count(str[, star][, end])返回字符串中str出现的次数，可以指定一个范围，默认从头至尾
+find(str[, star][, end])从左往右检测str字符串是否包含在字符串中，可以指定范围，默认从头到尾，得到的是第一次出现的开始下标，没有则返回-1
+rfind(str[, stat][, end])同上，从右至左查找
+index(str, star=0, end=len(str)和find()一样，如果str不存在的时候回报一个异常
+lstrip()截掉字符串左侧指定的字符，默认为空格
+rstrip()截掉字符串右侧指定的字符，默认为空格
+strip()截掉字符串两侧指定的字符
+split(str, num)以str为分割符截取字符串，指定num，则仅截取num个字符串
+splitline([keepends])按照（‘\r’，‘\r\n’，‘\n’）分隔（按行切割），keepend==true 会保留换行符
+join(seq)以指定的字符串分隔符，将seq中的所有元素组合成一个字符串
+replace(oldstr, newstr, count)用newstr替换oldstr，默认是全部替换。如果指定了count，则只替换前count个
+startswith(prefix[,start[,end]]) 是否以prefix开头 
+endswith(suffix[,start[,end]]) 是否以suffix结尾 
+isalnum() 是否全是字母和数字
+isalpha() 是否全是字母
+isdecimal() 是否只包含十进制数字
+isdigit() 是否全是数字
+isspace() 是否全是空白字符
+islower() 字母是否全是小写 
+isupper() 字母是否全是大写 
+istitle() 是否是首字母大写的
+
+
+
+
+
+
+
+
+

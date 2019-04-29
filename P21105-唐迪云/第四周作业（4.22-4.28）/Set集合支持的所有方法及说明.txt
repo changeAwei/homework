@@ -1,0 +1,81 @@
+1.set()函数
+     可以将其它的组合数据类型转化为可变集合类型，返回一个无重复元素且排序任意的可变集合
+语法：set() 返回一个空集合(该集合可变)
+      set(iterable)  返回一个新集合(该集合可变)
+注：s = {} 生成的是字典类型，而不是集合类型
+
+2.add()函数
+     如果集合s中不存在元素x，则将元素x添加到集合s中
+语法：s.add(x)
+
+3.clear()函数
+     删除集合s中的所有元素
+语法：s.clear()
+
+4.copy()函数
+     复制生成一个新的集合。
+语法 s.copy()
+
+5.discard()函数
+     移除集合s中的value元素。若value元素存在，则移除，不存在也不报错。
+语法：s.discard(value)
+
+6.remove()函数
+     移除集合s中的value元素。若value元素存在，则移除，不存在则报错(产生KeyError异常)
+语法：s.remove(value)
+
+7.pop()函数
+     随机移除集合s中的一个元素并返回该元素。若集合为空报错(产生KeyError异常)
+语法：s.pop()
+
+8.difference()函数
+     生成集合的差集
+语法：a.difference(b,c,d...)返回一个差集，等效于 a - b - d -...
+
+9.difference_update()函数
+     把集合a更新为集合a与集合b的差集。集合a元素被更新改变，但集合b元素不改变
+  或 从集合s中删除同时也在x中出现的所有元素。x可以是集合，列表，元组，字典等或者支持迭代的所有对象。
+语法：a.difference_update(b,c,d...)  无返回值
+      s.difference_update(x)  无返回值
+
+10.union()函数
+     生成集合的并集。即将集合a和集合b取并集，并将并集作为一个新的集合返回，但是不改变原集合a和集合b
+语法：a.union(b,c,d...)等效于 a | b | c | d...
+
+11.update()函数
+     将集合a和集合b取并集，并将结果保存在集合a中(即更新集合a)，集合b不改变，但是没有返回值
+  或 将x中的所有项添加到集合a中。x可以是 集合，列表，元组，字典等或者支持迭代的所有对象
+语法：a.update(b,c,d...)  返回值为空
+      a.update(x)  返回值为空
+
+12.symmetric_difference()函数
+     返回对称差集(反向交集)，即返回两个集合中不重复的元素集合，即移除两个集合中都存在的元素
+语法：a.symmetric_difference(b)等效于 a ^ b
+
+13.symmetric_difference_update()函数
+     把集合a更新为：集合a与集合b的对称差集。集合a元素被更新改变，但集合b元素不改变
+  或 计算集合s与x的对称差集，并将结果保存在集合s中。x可以是 集合，列表，元组，字典等或者支持迭代的所有对象
+语法：a.symmetric_difference_update(b)   返回值为空
+      s.symmetric_difference_update(x)   返回值为空
+
+14.intersection()函数
+     生成集合的交集
+语法：a.intersection(b,c,d...)  等效于 a & b & c & d...
+
+15.intersection_update()函数
+     把集合a更新为：集合a与集合b(或多个集合)的交集。集合a元素被更新，但集合b(其它集合)的元素不改变
+  或 计算集合s与x的交集，并将结果保存在集合s中。x可以是 集合，列表，元组，字典等或者支持迭代的所有对象
+语法：a.intersection_update(b,c,d...) 返回值为空
+      s.intersection_update(x)  返回值为空
+
+16.isdisjoint()函数
+     判断两个集合是否包含相同的元素，若没有相同元素则返回 True，否则返回 False
+语法：s.isdisjoint(b)   返回bool类型(True False)
+
+17.issubset()函数
+     判断两个集合是否是子集关系(A?B)。即判断集合a中的所有元素是否都包含在集合b中，若都包含在集合b中则返回True，否则返回False
+语法：a.issubset(b) 返回bool类型(True False)
+
+18. issuperset()函数
+     判断两个集合是否是超集(父集)。即判断集合b中的所有元素是否都包含在集合a中，若都包含在集合a中则返回True，否则返回False
+语法：a.issuperset(b)  返回bool类型(True False)

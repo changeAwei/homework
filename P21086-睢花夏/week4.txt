@@ -1,0 +1,75 @@
+1. 什么是杨辉三角和转置矩阵？
+杨辉三角是二项式系数在三角形中的一种几何排列。第n行有n项。第一行是1，第二行是1 1，之后每一行开始和结尾数字都是1，其他的每个数都等于上面两个数和，每行数字左右对称。
+转置矩阵是将矩阵的行列互换得到的新矩阵，转置矩阵的行列式不变。
+2. 说明列表和Set集合的相同点和不同点。
+列表中的元素可以重复，Set集合中的元素不可重复；列表可以通过索引访问（有序的线性结构），Set集合不可以索引（无序的非线型结构）；列表元素可以修改，Set集合不可以修改；Set集合的元素必须都可hash，列表元素可以是任意对象。
+列表和Set集合都不可hash。
+3. 请写出Set集合支持的所有方法及说明（例如：add 向Set集合中添加一个元素）
+add  add 向Set集合中添加一个元素
+updates  合并其他元素到set集合中来
+remove  从set集合中移除一个元素，元素不存在，抛KeyError异常
+discard   从set集合中移除一个元素，元素不存在，什么都不做
+pop  移除并返回任意元素
+clear  移除所有元素
+union  返回和多个集合合并后的新的集合
+intersection   返回和多个集合的交集
+intersection_update  获取和多个集合的交集，并就地修改
+difference  返回和多个集合的差集
+difference_update   获取和多个集合的差集并就地修改
+symmetric_difference   返回对称差集
+symmetric_difference_update  获取对称差集对就地修改
+issubset  判断当前集合是否是另一集合的子集
+set 1 < set2  判断set1是不是set2的真子集
+issuoerset  判断当前集合是否是另一集合的超集
+set1 > set2  判断set1是不是set2的真超集
+isdisjoint  当前集合和另一集合没有交集
+4. 请写出字典支持的所有方法及说明（例如：pop 从字典中移除指定的key并返回其value）
+d  返回key对应的值value，key不存在抛keyerror异常
+get  返回key对应的值value，key不存在返回缺省值，没有缺省值返回none
+setdefault  返回key对应的值value，key不存在，添加kv对，value设置为default，并返回default，如果default没有设置，缺省为None
+d[key] = value  将key对应的值改为value，key不存在添加新的kv对
+update  使用另一个字典的kv对更新本字典，key不存在就添加，key存在就覆盖已存在的key对应的值
+pop 从字典中移除指定的key并返回其value，key不存在，返回给定default，default未设置，key不存在则抛出keyerror异常
+popitem  移除并返回一个任意的键值对，字典为empty抛出keyerror异常
+clear  清空字典
+del   字典删除，本质上减少一个对象的引用
+for ... in dict  遍历key value item
+collections.defaultdict([default_factory[, ...]])  第一个参数是default_factory，缺省是None，它提供一个初始化函数。当key不存在的时候，会调用这个工厂函数来生成key对应的value
+collections.OrderedDict([items])  key并不是按照加入的顺序排列，可以用OrderedDict来记录顺序
+5. 请写出Python内建函数及说明
+id  返回对象的唯一标识，CPython返回内存地址
+hash  返回一个对象的哈希值
+type  返回对象的类型
+float() int() bin() hex() oct() bool() list() tuple() dict() set() complex() bytes() bytearray()  类型转换
+input  接收用户输入，返回一个字符串
+print  打印输出，默认使用空格分割，换行结尾，输出到控制台
+ len  返回一个集合类型的元素个数
+isinstance  判断对象是否属于列出的某个类型
+sisubclass  判断类型是否属于某个类型的子类
+abs  绝对值  max  最大值  min  最小值
+round  四舍五入六取偶
+pow(x,y)  x的y次方
+range(m，n，x)   从m到n-1，步长为x的可迭代对象
+divmod(x,y)等价于tuple(x//y,x%y)
+sum  可迭代对象的所有数值元素之和
+chr  给一个一定范围的整数并返回对应的字符串
+orc   返回字符对应的整数
+str  返回一个字符串类型对象
+sorted  排序，返回一个新的列表，默认升序
+reserved  返回一个翻转元素的迭代器
+enumerate  迭代一个序列，返回索引数字和元素构成的二元组
+iter  将一个可迭代对象封装成一个迭代器
+next  对一个迭代器取下一个元素
+zip  像拉链一样，把多个可迭代对象合并在一起，返回一个迭代器，将每次从不同对象中取到的对象合并成一个元组
+
+
+
+
+
+
+
+
+
+
+
+

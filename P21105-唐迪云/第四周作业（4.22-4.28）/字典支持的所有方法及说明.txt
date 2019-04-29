@@ -1,0 +1,50 @@
+1.dict()函数
+     生成一个字典
+语法：dict()  生成一个空字典
+      dict(mapping)  从映射对象（键，值）对新字典进行初始化
+      dict(iterable)  通过iterable(可迭代对象)对新字典进行初始化
+      dict(**kwargs) 在关键字参数列表使用name = value对新字典进行初始化
+
+2.clear()函数
+     删除字典d中所有的键值对。
+语法：d.clear()  返回一个空字典
+
+3.copy()函数
+     生成一个新字典，浅复制字典d中的所有键值对
+语法：d.copy() 返回字典d的浅拷贝
+
+4.fromkeys()函数
+     创建一个新字典，以可迭代对象iterable中元素做字典的键，value 为字典所有键对应的初始值，默认值为None
+语法：fromkeys(iterable, value=None, /)
+
+5.get()函数
+     返回d[k],若字典d中无k键，则返回d
+语法：d.get(k,d)   若k不在字典d中，则返回自定义的d,d默认值为None
+
+6.items()函数
+     返回字典d中所有键值对
+语法：d.items() 
+
+7.keys()函数
+     返回字典d中所有键的信息
+语法：d.keys()
+
+8.values()函数
+     返回字典d中所有值的信息
+语法：d.values()
+
+9.pop()函数
+     从字典中移除指定的key并返回其value
+语法：d.pop(key,d)   删除指定的键并返回相应的值。如果未找到key，则返回d（如果给定），否则引发KeyError错误
+
+10.popitem()函数
+     随机从字典d中取出一个键值对，并以元组(key,value)的形式返回,同时将该键值对从字典d中删除。若字典d为空，则引发KeyError
+语法：d.popitem()   返回键值对
+
+11.setdefault()函数
+     如果字典d存在键k，则返回d[k],否者返回d,并将d[k]的值设为d,且将该键值对(k,d)保存在字典d中
+语法：d.setdefault(k,d) 
+
+12.update()函数
+     将a中的所有对象添加到字典d中
+语法：d.update(a)  返回值为空

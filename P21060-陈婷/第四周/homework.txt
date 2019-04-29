@@ -1,0 +1,44 @@
+1. 什么是杨辉三角和转置矩阵（文字说明即可）？
+杨辉三角是一个逐行元素递增的三角形，第一行有一个元素，第二行有二个元素，第N行有N个元素，每一行的第一个元素和最后一个元素都为1，
+其余的元素都是其前一行且与其相邻两个元素的和。
+转置矩阵是指将矩阵的对角线两端的元素一一更换，形成一个新的矩阵。
+
+2. 说明列表和Set集合的相同点和不同点。
+列表和set都是可迭代对象，都是可变的 ，但是列表是有序的，可以通过索引进行取值，set是非线性结构，是无序的，无法通过索引取值，里面的元素必须是可hash的。
+
+3. 请写出Set集合支持的所有方法及说明（例如：add 向Set集合中添加一个元素）
+增加元素
+add(elem) 如果元素在集合在存在，什么也不做，如不在，则将元素加入集合
+update(*others):合并其他元素到set集合，参数必须是可迭代对象。
+删除元素：
+remove(elem)   移除元素，如果不存在则抛KeyError异常
+discard(elem) 移除元素，如果不存在，什么都不做。
+pop() -> item   移除任意一个元素，并返回这个元素。如果空集合，则抛KeyError异常。
+clear()  移除所有元素
+
+4. 请写出字典支持的所有方法及说明（例如：pop 从字典中移除指定的key并返回其value）
+d[key]  返回key对应的value值，如果没有这个key，则抛KeyError异常
+get(key[,default])  返回key对应的value值,如果没有这个key，则返回缺省值，如果没有缺省则返回None
+setdefault(key[,default]) 返回key对应的value值，如果key不存在，添加kv对，value设置为缺省值，没有缺省值，设置None
+修改：
+d[key] = value: 将key对应的值修改为value。key不存在，则添加kv对
+update([other]) ->None
+使用另一个字典的kv更新本字典，key不存在就添加，存在则修改key对应的值。
+删除：
+pop(key[,default])
+key存在，移除他，并返回其value
+不存在，返回给定的default，如default未设置，key不存在则抛KeyError异常。
+popitem():
+移除并返回任意一个kv对。如字典为空，则抛KeyError异常。
+clear() .清空字典
+
+
+5. 请写出Python内建函数及说明（参考：https://docs.python.org/3/library/functions.html）
+abs(x) ->取x的绝对值
+all(iterable) ->如果可迭代对象为空，则返回True
+any(iterable) ->与all相反，如果可迭代对象为空，返回False
+ascii(object) ->
+bin(x)->返回 x的二进制编码
+bool(x) ->如果x为非0或非空则返回True，否则返回False
+
+

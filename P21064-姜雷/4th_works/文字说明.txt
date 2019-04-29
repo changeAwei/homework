@@ -1,0 +1,115 @@
+
+1 文字说明杨辉三角和转置矩阵
+
+杨辉三角:二项式系数在三角形中的一种几何排列,其第n行的第m个数可表示为组合数C(n-1,m-1)
+转置矩阵:如果矩阵A的任意第i行第j列的元素和矩阵B的第j行第i列的元素相等,则矩阵B是矩阵A的转置矩阵
+
+2 说明列表和set的相同点和不同点
+
+相同点:列表和set都是内建的容器数据结构,实现了__len__,__iter__,__contains__,__getitem__,__setitem__
+       方法.
+       列表和set都是可变数据结构,可以对元素进行增,删.
+
+不同点:列表的元素是不可hash,set的元素是可hash,并且会去重
+       列表是线性结构,可以索引访问;set是非线性结构,没有索引,属于数学上的集合概念
+
+3 写出Set集合支持的所有方法及说明
+
+s = set()
+
+s.copy()   返回set的一个浅拷贝
+
+增加元素
+
+s.add(elem)    增加一个元素到set中,返回None.如果元素本身存在,什么也不做
+
+s.update(*iterable) 合并其他可迭代对象的元素到set中,返回None
+
+删除元素
+
+s.remove(elem)  从set中移除一个元素,返回None,元素如果不存在抛出异常
+
+s.discard(elem) 从set中移除一个元素,返回None,元素如果不存在则什么也不做
+
+s.pop()   移除并返回任意元素,set为空时执行该方法抛出异常
+s.clear() 移除所有元素,返回None
+
+集合运算
+
+s.union(*others) 返回set和多个集合求并集后的新集合
+
+s.intersection(*others) 返回set和多个集合求交集后的新集合
+s.intersection_update(*others) 返回set和多个集合求交集后的新集合,将结果赋值给set自身
+
+s.difference(*others) 返回set和多个集合求差集后的新集合
+s.difference_update(*others) 返回set和多个集合求差集后的新集合,将结果赋值给set自身
+
+s.symmetric_difference(other) 返回set和另一个集合的差集
+s.symmetric_difference_update(other) 返回set和另一个集合的差集,将结果赋值给set自身
+
+
+s.isdisjoint(other)  判断set和另一个集合是否有交集,没有则返回True
+
+s.issubset(other)  判断set是否是另一个集合的子集,如果是则返回True
+
+s.s.issuperset(other)  判断set是否是另一个集合的超集,如果是则返回True
+
+
+
+4 写出字典支持的所有方法及说明
+
+d = dict()
+
+d.copy()   返回字典的一个浅拷贝
+
+访问元素
+
+d.get(key[,default])  返回key对应的值value;key不存在的时候抛出异常
+
+增加和修改
+
+d.update(other)  合并字典,返回None.如果key不存在会添加新的键值对,存在就会覆盖
+
+d.fromkeys(iterable[,value=None]) 返回一个新字典,将可迭代对象所有元素当初key,对应同一个值value
+
+设置新增键值对的默认值
+
+d.setdefault(key[,default]) 返回key对应值的value.如果key不存在,添加键值对,并将值设为default,返回default
+
+
+删除
+
+d.pop(key[,default])  删除一个键值对. key存在就移除,返回对应value
+                      key如果不存在,返回给定的default;如果default未设置且key不存在,抛出异常
+
+d.popitem()   移除并返回一个任意键值对.字典为空时执行该方法抛出异常
+
+d.clear()  移除所有键值对,返回None
+
+遍历
+
+d.keys()     返回一个可迭代对象,元素是字典的所有keys
+ 
+d.values()   返回一个可迭代对象,元素是字典的所有values
+
+d.items()    返回一个可迭代对象,元素是字典的所有键值对组成的二元组
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

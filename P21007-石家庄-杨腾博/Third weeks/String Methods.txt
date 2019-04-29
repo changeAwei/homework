@@ -1,0 +1,44 @@
+﻿1、str.capitalize()				返回字符串的副本，第一个字符大写其余小写
+2、str.casefold()				返回一个折叠的字符串副本。折叠的字符串可用于无大小写匹配。例如："ß"会翻译为"ss"
+3、str.center(width[,fillchar])			返回以长度和宽度为中心的字符串，指定width先左后右的添加fillchar(仅限一个字符)字符，当长度小于源字符串返回源字符串。
+4、str.count(sub[,start[,end]])			返回范围[start[,end]]内sub不重叠出现次数，[start[,end]]用切片表示法	
+5、str.encode(encoding='utf8',errors='strict')	以字节形式返回字符串的编码版本，默认encoding=utf8，默认errors=strict
+6、str.endswith(suffix[,start[,end]])		返回bool类型，判断字符是否以suffix参数作为后缀，是则true，否则false，开始start，结尾end
+7、str.expandtabs(tabsize=8)			返回一个字符串的副本，根据当前指定tabsize大小，遇到下一个\t前用0个或多个空格补齐
+8、str.find(sub[,start[,end]])			返回范围[start[,end]]内sub的索引，如查找失败返回-1
+9、str.format(*args,**kwargs)			执行字符串格式操作，用{}分割的文本或替换字段。返回字符串的副本，其中每个替换字段都替换为参数对应的值
+10、str.index(sub[,start[,end]]）		返回范围[start[,end]]内最左侧sub的索引，如查找失败返回ValueError
+11、str.isalnum()				如果字符串内是否为最少一个字符的字母或数字组成，则返回true，否则返回false
+12、str.isalpha()				如果字符串中的所有字符都是字母，并且至少有一个字符，则返回true，否则返回false
+13、str.isascii()				如果字符串为空或字符串中的所有字符都是ASCII，则返回true，否则返回false。ASCII字符的码位在U+0000-U+007F范围内
+14、str.isdecimal()				如果字符串中的所有字符都是十进制字符并且至少有一个字符，则返回true，否则返回false。
+15、str.isdigit()				如果字符串中的所有字符都是数字并且至少有一个字符，则返回true，否则返回false
+16、str.isidentifier()				根据语言定义、节标识符和关键字，如果字符串是有效标识符，则返回true，否则返回false
+17、str.islower()				如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是小写，则返回 True，否则返回 False
+18、str.isnumeric()				如果字符串中的所有字符都是数字字符，并且至少有一个字符，则返回true，否则返回false
+19、str.isprintable()				如果字符串中的所有字符都可打印或字符串为空，则返回true，否则返回false
+20、str.isspace()				如果字符串中只有空白字符并且至少有一个字符，则返回true，否则返回false
+21、str.istitle()				如果字符串中每个单词首字母大写其余小写，则返回true，否则返回false
+22、str.isupper() 				如果字符串中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回 True，否则返回 False
+23、str.join(iterable)			返回通过指定字符连接序列中元素后生成的新字符串
+24、str.ljust(width[, fillchar])			返回一个原字符串左对齐,并使用空格填充至指定长度的新字符串。如果指定的长度小于原字符串的长度则返回原字符串
+25、str.lower()				全部转化为小写
+26、str.lstrip([chars])			从左侧删除指定chars，默认space
+27、str.partition(sep)			在sep的第一次出现处拆分字符串，并返回包含分隔符前面的部分、分隔符本身和分隔符后面的部分的3元组。
+28、str.replace(old, new[, count])		返回字符串的副本，其中所有出现的子字符串old都被new替换，如果指定了count则替换count次
+29、str.rfind(sub[, start[, end]])		从右侧寻找sub，找到第一个返回其索引
+30、str.rindex(sub[, start[, end]])		返回范围[start[,end]]内最右侧sub的索引，如查找失败返回ValueError
+31、str.rjust(width[, fillchar])			返回一个原字符串右对齐,并使用空格填充至指定长度的新字符串。如果指定的长度小于原字符串的长度则返回原字符串
+32、str.rpartition(sep)			在sep的最后一次出现处拆分字符串，并返回包含分隔符前面的部分、分隔符本身和分隔符后面的部分的3元组。
+33、str.rsplit(sep=None, maxsplit=-1)		返回字符串中的单词列表，从右侧用sep作为分隔符字符串。如果指定了maxsplit则切maxsplit次
+34、str.rstrip([chars])			右侧删除chars指定的字符，返回字符串副本，删除连续字符，否则不生效。
+35、str.split(sep=None, maxsplit=-1)		返回字符串中的单词列表，从左侧用sep作为分隔符字符串。如果指定了maxsplit则切maxsplit次
+36、str.splitlines([keepends])			按行进行分割取值
+37、str.startswith(prefix[, start[, end]])		如果字符串以prefix开头，则返回true，否则返回false
+38、str.strip([chars])			删除chars指定的字符，返回字符串副本，删除连续字符，否则不生效。
+39、str.swapcase()				返回字符串副本，大小写互换，注意：.swapcase().swapcase()不一定是正确的！！！
+40、str.title()				单词首字母为大写，其余为小写
+41、str.maketrans(x[, y[, z]])			创建转码表x指定被转码值，y转码值，z删除指定值
+42、str.translate(table)			使用maketrans创建转码表，再用translate进行转码
+43、str.upper()				全部转化为大写
+44、str.zfill(width)				返回用ASCII“0”数字填充的字符串的副本，以生成一个长度宽度的字符串，长度小于源字符串则返回源字符串
