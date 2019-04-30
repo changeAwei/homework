@@ -73,7 +73,7 @@ def run():
         print('第二次输入')
         def tow(b=int(get_input())):
             def oper():
-                print('输入运算符/或者其他的重新输入')
+                print('输入运算符/或者其他的重新载入')
                 run_oper=calc(a,b)
                 c = get_input()
                 if c == '+':
