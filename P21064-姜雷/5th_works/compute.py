@@ -3,6 +3,7 @@
 
 
 def compute():
+    opratorlist = ['+', '-', '*', '/']
     while True:
         print('to quit the computer,please input "quit"')
 
@@ -11,7 +12,6 @@ def compute():
             break
         firstnumber = 0 if int(first) == 0 else int(first.strip().lstrip('0'))
 
-        opratorlist = ['+', '-', '*', '/']
         operator = input(r'please inpute operator ,which is one of "+", "-", "*", "/":')
         if operator not in opratorlist:
             print('you can only input one of "+","-","*","/"')
