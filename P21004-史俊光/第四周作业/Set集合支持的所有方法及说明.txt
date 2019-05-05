@@ -1,0 +1,18 @@
+3. 请写出Set集合支持的所有方法及说明（例如：add 向Set集合中添加一个元素）
+add 增加一个元素到set集合中
+copy 复制集合
+update(*others) 合并其他元素到set集合中来，参数others必须是可迭代对象，就地修改
+remove 从set中移除一个元素(元素不存在，抛出KeyError异常)
+discard 从set中移除一个元素(元素不存在，什么都不做)
+pop	移除并返回任意元素
+clear() 移除所有元素
+union(*others)	返回和多个集合合并后的新的集合
+intersection(*others) 返回和多个集合的交集
+intersection_update(*others) 获取和多个集合的交集，并就地修改
+difference(*others)	返回和多个集合的差集
+difference_update(*others)	获取和多个集合的差集，并就地修改
+symmetric_difference(other)	返回和另一个集合的差集
+symmetric_difference_update(other)	获取和另一个集合的差集，并就地修改
+issubset(other)	判断当前集合是否是另一个集合的子集
+issuperser(other)	判断当前集合是否是other的超集
+isdisjoint(other)	当前集合和另一个集合没有交集，没有交集，返回true

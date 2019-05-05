@@ -1,0 +1,10 @@
+Python在查找‘名称-对象’映射时，使用的是LEGB规则，表示的是Local -> Enclosed -> Global -> Built-in，其中的箭头方向表示的是搜索顺序
+
+L--local 局部名字空间
+E--enclosing 直接外围空间
+G--global 全局名字空间
+B--builtin 内建名字空间
+
+即如果某个name:object映射在局部(local)命名空间中没有找到，接下来就会在闭包作用域(enclosed)进行搜索，如果闭包作用域也没有找到，Python就会到全局(global)命名空间中进行查找，最后在内建(built-in)命名空间搜索
+
+注：如果一个名称在所有命名空间中都没有找到，就会产生一个NameError
