@@ -1,0 +1,67 @@
+1.字典的性质：字典是由kv对组成的数据结构的集合（key-value键值对）
+字典是可变的，无序的，非线性结构，key值不重复。集合是一个简化的字典
+2.字典的定义：
+（1）. 空字典的定义，习惯上用 d={}来定义空字典，也可以是 d=dict（）
+d = dict（**kwargs） **kwargs等效于 name=value的形式。
+如：d = dict（a = 1， b = 2， c = 3）
+或者用d = {‘a’：1， ‘b’：2，‘c’：3}这种形式来初始化一个字典
+对于value来说，任何元素都可以放进来，可以是int，可以是str，可以是set，也可以是
+list或者tuple，或者None。但是对于key值来说，就只能是放可hash的元素
+（2）. 类方法dict.fromkeys（iterable，value）
+d = dict.fromkeys(range(5)) 表示创建在字典中创建五个key，key是01234，value缺省
+为None。
+d = dict.fromkeys(range(5),0) 表示value值为0，value可以重复
+（3）. 用已有字典构造另一个字典，dict（mapping，**kwarg） mapping表示已有字典
+dict的用法，小括号里面必须是 a = 1的形式 注意的是a表示的是标记符，不能用数字，右边
+的赋值如果是字符的话应该用字符串的性质，否则会被认为是类标记符。如果要用数字作为
+key值，只能用{1 ：‘aa’}这种形式。
+3.字典的使用方法：
+（1）.字典元素的访问
+d[key] 返回的是key对应的value，类似索引的访问，不存在报keyerror，类似索引超界
+对于元素访问这里，不管是有序的结构还是无序的结构，都是用到了中括号的形式，注意的
+是集合是没有办法索引的，但是字典可以，因为字典有kv对，有一一对应的关系在。
+
+get（key[,default]）这种方法也比较常用。这也是返回key对应的value值，但是如果key不
+存在时返回的是缺省值，缺省值可以设置，如果没有设置则返回的是None。
+
+setdefault（key[,default]）这里依然是返回key对应的value值，但是与get不同的是，如果
+key不存在，就添加kv对并返回default（如果default设置了的话），没设置就返回None。
+添加的kv对的value值就是你设置的default。
+
+从字典元素的访问这三个方法可以看出来，是循序渐进的，先是最简单的d[key]，没有就抛
+异常，然后在进一步的变成get，没有不抛异常但是给你返回default，然后在变成setdefault
+没有就给你配个kv对。
+（2）.字典增加和修改
+d[key] = value 将key对应的值修改成value，如果key不存在就添加新的kv对，在这里跟
+setdefault有类似的地方，都是有添加kv对的情况在。
+
+update（[other]） 使用另一个字典的kv对来更新本字典 ，key不存在就会添加，存在就
+会进行覆盖已有的value。就地修改。update里面可以是一个字典，或者一个元组，元组
+里面可以套列表。或者是一个单一的kv对。
+
+对于字典来说，一定是要保证key值的唯一性的，比如（kv-1:7）和（kv-1:8）这两个元素
+这两个是不一样的元素，但是就是不能同时存在，后一个会覆盖前一个
+（3）.字典删除
+pop（key[,default]）key存在的话删除key并返回它的value。不存在的话返回的是设置的
+default值，如果default没有设置则会抛出keyerror异常。
+
+popitem（） 这个方法是随机的移除一个键值对，如果字典为空时抛出keyerror异常
+
+del语句
+如果两个标识符接了一个引用类型，del在删除引用类型的时候，是都删除的。del删除的本质
+是删除了标识符或者说是名称，而不是对象
+（4）.字典遍历
+字典的遍历有三种类型，遍历key值，遍历value值，遍历item（kv对）
+key：for k in d：  print（k）  
+for k in d.keys():   print(k)
+
+value: for k in d:   print(d[k]) 
+for k in d.keys():   print(d.get(k))
+for v in d.values():  print(v)
+
+item: for i in d.items():  print(i)  返回的是一个kv对元组
+for i in d.items():  print(i[0], i[1]) 返回的不是元组
+for i，j in d.items(): print(i, j)
+（5）.在遍历中移除
+对于列表来说，在遍历中移除元素应该用while而不是for循环，因为涉及到长度的关系，for
+循环可以用但是移除不干净，而对于字典来说就直接不能用for循环了，会报错。
