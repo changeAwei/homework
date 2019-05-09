@@ -1,0 +1,77 @@
+Set 对象的方法
+1.
+len(s) 
+返回Set的元素个数。
+2.
+x in s 
+x 在Set s中，返回True,否则返回False。
+3.
+x not in s 
+x 不在Set s中，返回True,否则返回False。
+4.
+isdisjoint(other) 
+set s 与other不一样或者没有相同的部分时，返回True.
+5.
+ issubset(other) 
+set <= other 
+测试set 的每个元素是否都在other里。
+set < other 
+测试set 是否是other的子set。
+6.
+ issuperset(other) 
+set >= other 
+测试other的每个元素是否都在set里。
+set > other 
+测试set的每个元素是否都在other里。
+7.
+union(*others) 
+set | other | ... 
+Return a new set with elements from the set and all others. 
+返回一个包含set, other 等元素的新set。
+8.
+intersection(*others) 
+set & other & ... 
+返回一个既在set，也在other等元素的新set。
+8.
+difference(*others) 
+set -other -... 
+返回一个既不在set，也不在other等的新set。
+9.
+ symmetric_difference(other) 
+set ^ other 
+Return a new set with elements in either the set or other but not both. 
+返回一个不属于set和other等元素的新set。
+10.
+copy() 
+返回一个影子拷贝set。
+11.
+update(*others) 
+set |= other | ... 
+更新set，添加其他set的元素到set里。
+12.
+intersection_update(*others) 
+set &= other & ... 
+更新set，只保留在set和其他所有set里相同的元素。
+13.
+difference_update(*others) 
+set -= other | ... 
+更新set，移除在其他set里的元素。
+14
+symmetric_difference_update(other) 
+set ^= other 
+更新set, 保留在两个set里，但是不相同的元素。
+15.
+add(elem) 
+添加elem元素到set里。
+16.
+remove(elem) 
+移除set的elem元素,没有包含这个元素就抛出KeyError。
+17.
+discard(elem) 
+如果存在一个元素，就移除还元素。
+18.
+pop() 
+移除并返回set的一个元素，如果set为空，就抛出KeyError 。
+19.
+clear() 
+移除set的所有元素。
