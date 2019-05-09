@@ -1,0 +1,5 @@
+keyword-only参数：
+是python3加入的，如果在一个星号参数后，或者是一个位置可变参数后面，出现的普通参数，即为keyword-only参数。
+keyword-only参数在传值时不可以缺省（除非其有默认值），且必须使用关键字赋值。
+例子：def fn(*args,x):  这里x就是keyword-only参数
+
