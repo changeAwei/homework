@@ -1,0 +1,79 @@
+一、什么是高阶函数和柯理化并举例说明。
+高阶函数：y = g(f(x)),一是接受一个或多个函数作为参数；二是输出一个函数。
+举例：
+print(sorted([1,6,2,5,3],key=lambda x:10-x))
+print(list(filter(lambda x:x%3==0,[1,2,3,4,5,6])))
+print(list(map(lambda x:x+10,[1,2,3])))
+print(dict(map(lambda x:(x+10,x),range(3))))
+
+
+柯里化：将原来接受两个参数的函数变成新的接受一个参数的函数的过程，新的函数返回一个以原有第二个参数为参数的函数。
+举例：
+def add(x):
+    def inner(y):
+        return x + y
+    return inner
+print(add(2)(3))
+
+
+二、请列出functools包内的每个函数的功能作用。
+functools模块中定义了如下方法：
+
+1.functools.cmp_to_key(func) 
+
+　　将老式的比较函数（comparison function）转化为关键字函数（key function）。与接受key function的工具一同使用（如 sorted(), min(), max(), heapq.nlargest(), itertools.groupby())。该函数主要用来将程序转成 Python 3 格式的，因为 Python 3 中不支持比较函数。
+　　比较函数是可调用的，接受两个参数，比较这两个参数并根据他们的大小关系返回负值、零或正值中的某一个。关键字函数也是可调用的，接受一个参数，同时返回一个可以用作排序关键字的值。
+　　例如：
+sorted(iterable, key=cmp_to_key(locale.strcoll))
+
+
+2. functools.total_ordering(cls) 
+
+　　这是一个类装饰器，给定一个类，这个类定义了一个或多个比较排序方法，这个类装饰器将会补充其余的比较方法，减少了自己定义所有比较方法时的工作量。
+　　被修饰的类必须至少定义 __lt__(), __le__(), __gt__() 或 __ge__() 中的一个，同时，被修饰的类还应该提供 __eq__() 方法。
+
+3.  functools.reduce(function, iterable[, initializer]) 
+
+　　在迭代sequence的过程中，首先把前两个元素传给函数参数，函数加工后，然后把得到的结果和第三个元素作为两个参数传给函数参数，
+	函数加工后得到的结果又和第四个元素作为两个参数传给函数参数，依次类推。
+	如果传入了initial值，那么首先传的就不是sequence的第一个和第二个元素，而是initial值和第一个元素。经过这样的累计计算之后合并序列到一个单一返回值。
+	例如：
+	reduce(lambda x,y: x+y, [1, 2, 3]) 
+
+	
+4.  functools.partial(func[,*args][, **keywords]) 
+
+　　偏函数，将函数部分参数固定下来，相当于为部分参数设置了一个固定默认值，返回一个新的函数。
+	从partial生成的新函数，是对原函数的封装。
+	例如：
+	def add(x,y):
+		return x + y
+	newadd = partial(add,y=1)
+	newadd(2)
+  
+四、什么是类型注解并说明其背后的目的。
+    python是动态语言，不做任何类型检查，直到运行期问题才显现出来，或者线上运行才能暴露问题；
+    函数的使用者在看到函数的时候，并不知道应该传入什么类型的数据。
+    为了解决上述弊端，在python3.5时引入对函数的参数进行类型注解，对函数的返回值进行类型注解；
+    只对函数参数做一个辅助说明，并不对函数参数进行类型检查；
+    提供给第三方工具做代码分析，发现隐藏bug。
+    函数注解的信息保存在__annotations__属性中。
+    变量注解python3.6引入。
+    例如 ：
+def add（x:int,y:int）
+    pass
+i:int = 3    
+
+
+5. functools.update_wrapper(wrapper, wrapped[, assigned][, updated]) 
+
+　　更新一个包装（wrapper）函数，使其看起来更像被包装(wrapped)的函数。
+　　可选的参数指定了被包装函数的哪些属性直接赋值给包装函数的对应属性，
+	同时包装函数的哪些属性要更新而不是直接接受被包装函数的对应属性。
+	参数 assigned 的默认值对应于模块级常量 WRAPPER_ASSIGNMENTS (默认地将被包装函数的 __name__, __module__ 和 __doc__ 属性赋给包装函数)， 
+	参数 updatedd  的默认值对应于模块级常量 WRAPPER_UPDATES (默认更新 wrapper 函数的 __dict__ 属性)。
+　　
+6. functools.wraps(wrapped[, assigned][, updated]) 
+
+　　这个函数可以用作一个装饰器，简化调用函数 update_wrapper 的过程。
+	调用这个函数等价于调用  partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated)。
