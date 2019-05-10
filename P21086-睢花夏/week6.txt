@@ -1,21 +1,21 @@
 1. 什么是高阶函数和柯理化并举例说明。
 高阶函数是接受一个或多个函数作为参数或者输出一个函数的一种函数。
 def counter(base):
-def inc(step=1): 
-nonlocal base
-base += step 
-return base
-return inc
+  def inc(step=1): 
+    nonlocal base
+    base += step 
+    return base
+  return inc
 柯理化是指将原来接受两个参数的函数变成新的接受一个参数的函数的过程。新的函数返回一个以原有第二个参数为参数的函数。
 将减法函数柯理化
 def minus(x,y):
-return x-y
+  return x-y
 
 转换如下
 def minus(x):
-def _minus(y):
-return x-y
-return _minus
+  def _minus(y):
+    return x-y
+  return _minus
 minus(6)(9)
 2. 请列出functools包内的每个函数的功能作用。
 @functools.reduce  将两个参数的函数累加到序列项中，从左到右，以便将序列减少为单个值。
