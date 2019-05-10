@@ -2,15 +2,15 @@
 keyword-only参数（Python3加入）。
 如果在一个星号参数后，或者一个位置可变参数后，出现的普通参数，实际上已经不是普通的参数了，而是keyword-only参数。
 def fn(*args,x,y,**kargs):
-print(x)
-print(y)
-print(args)
-print(kargs)
+  print(x)
+  print(y)
+  print(args)
+  print(kargs)
 fn(3,5,x=4,y=7,z=4,a=10,b=100)
 此时x,y就是keyword-only参数
 keyword-only 参数另一种形式，*号之后，普通形参都变成了必须给出的keyword-only 参数
 def fn(*,x,y):
-print(x,y)
+  print(x,y)
 fn(x=5,y=6)
 此时x,y就是keyword-only参数
 2.什么是LEGB，请解释
