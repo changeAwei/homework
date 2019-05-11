@@ -37,6 +37,16 @@ LEGB是变量名的解析规则。顺序是Local>Enclosing>Global>Build-in
      6. 尽可能改善用户体验（新需求） 
 {
 operator1 = ['+','-','*','/']
+def calculator(num1,operator,num2):
+    if operator == "+":
+        return num1 + num2
+    elif operator == "-":
+        return num1 - num2
+    elif operator == "*":
+        return num1 * num2
+    elif operator == "/":
+        return num1 / num2
+operator1 = ['+','-','*','/']
 while True:
         num1 = input('please input number one:')
         while not num1.strip().isdigit():
@@ -49,17 +59,10 @@ while True:
             num2 = input('please input number two:') 
         num1 = int(num1)
         num2 = int(num2)
-        if operator == '+':
-            print('{} + {} = {}'.format(num1,num2,num1+ num2))
-        elif operator == '-':
-            print('{} - {} = {}'.format(num1,num2,num1-num2))
-        elif operator == '*':
-            print('{} * {} = {}'.format(num1,num2,num1*num2))
-        else:
-            print('{} / {} = {}'.format(num1,num2,num1/num2))
-        choice = input("是否继续计算（Y/N）").upper()
+        print('{}{}{} = {}'.format(num1,operator,num2,calculator(num1,operator,num2)))
+        choice = input("Continue Yes or No（Y/N）?").upper()
         if choice == 'Y':
             continue
         else:
-            break      
+            break 
 }
