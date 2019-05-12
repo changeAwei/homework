@@ -1,0 +1,27 @@
+    1. 什么是高阶函数和柯理化并举例说明。
+举例：	def first(src:str):
+	    def sec(split=1):
+	         src.split(maxsplit=split)
+
+    2. 请列出functools包内的每个函数的功能作用。
+functools.cmp_to_key(f_nc)：
+@functools.lr__cache(maxsize=128, typed=False)：缓存，该文件最多可保存MaxSize最近的调用。如果maxsize设置为none，则禁用lr_功能，并且缓存可以无约束增长。当maxsize是2的幂时，lr_功能的性能最好。如果typed设置为tr_e，则将单独缓存不同类型的函数参数。例如，F（3）和F（3.0）将被视为具有不同结果的不同调用。
+@functools.total_ordering：给定一个定义一个或多个丰富的比较排序方法的类，这个类修饰器提供其余的方法。类必须定义__ lt__（）、__ le__（）、__ gt__（）或__ ge__（）中的一个。此外，类应该提供一个__ eq__（）方法。
+functools.partial(func, *args, **keywords):偏函数，返回一个新的偏函数对象，该对象在调用时的行为将类似于使用位置参数args和关键字参数关键字调用的func。如果向调用提供了更多参数，则这些参数将附加到参数中。如果提供了其他关键字参数，它们将扩展并重写关键字。
+class functools.partialmethod(func, *args, **keywords)：返回一个新的partialMethod描述符，该描述符的行为类似于分部，只是它被设计为用作方法定义，而不是直接调用。
+functools.reduce(function, iterable[, initializer])：将两个参数的函数从左到右累计应用于序列项，从而将序列减少到单个值。
+@functools.singledispatch：将函数转换为单个分派通用函数。
+functools.update_wrapper（wrapper，wrapped，assigned=wrapper_assignments，updated=wrapper_updates）：
+
+更新包装函数，使其看起来像包装函数。可选参数是元组，用于指定将原始函数的哪些属性直接分配给包装函数上的匹配属性，以及使用原始函数的相应属性更新包装函数的哪些属性。
+@functools.wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)
+
+：这是一个方便的函数，用于在定义包装函数时调用update_wrapper（）作为函数装饰器。它相当于部分（update_wrapper，wrapped=wrapped，assigned=assigned，updated=updated）。
+
+
+    3. 请使用已学习的装饰器相关知识自己实现functools.lur_cache。
+详见test.py
+
+    4. 什么是类型注解并说明其背后的目的。 
+类型注解：对函数参数进行类型说明，并不检查参数类型
+因为Python属于动态语言，变量随时被赋值，且能赋值为不同的类型，所以函数定义就会有弊端，1)、难发现：由于不做类型检查，直到最后或者项目上线时才能发现问题。2)、难使用：函数使用者第一次使用函数时并不知道该传什么类型的参数。尽量规避由参数类型引起的问题。
