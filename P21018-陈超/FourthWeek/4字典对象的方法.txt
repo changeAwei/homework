@@ -1,0 +1,56 @@
+字典对象的方法
+1.
+len(d)
+返回字典的元素的个数。
+2.
+d[key]  
+返回指定key的对象，没有则抛出KeyError。
+3.
+d[key] = value
+设置key对应的值。
+4.
+del d[key] 
+从d中移除指定key的对象没有则抛出KeyError。
+5.
+key in d 
+key在d中返回True,否则返回False。
+6.
+key not in d
+key不在d中返回True,否则返回False。
+7.
+iter(d) 
+返回一个key的迭代对象，等价于iter(d.keys())
+8.
+clear() 
+清除字典的所有元素。
+9.
+copy() 
+返回一个字典的影子拷贝。
+10.
+​classmethod fromkeys(iterable[, value])
+使用一个迭代对象的key创建一个新的字典，值默认为None。 
+11.
+get(key[, default]) 
+返回key对应的值，没有则返回默认值，没有默认值则返回None。
+12.
+items() 
+返回一个key, value的二元组的迭代对象。
+12.
+keys() 
+返回key的迭代对象。
+14.
+pop(key[, default]) 
+如果key在字典中，移除并返回值，否则返回默认值，没有默认值或者key不在字典里，则抛出KeyError。
+15.
+popitem() 
+Remove and return a (key, value) pair from the dictionary. 
+移除并返回一个字典的键值对。
+16.
+setdefault(key[, default])
+如果字典存在键key ，返回它的值。如果不存在，插入值为default 的键 key ，并返回default 。default 默认为 None。
+17.
+update([other ]) 
+从other字典中更新当前字典的键值对，复写字典存在的键，返回None。
+18.
+values() 
+返回一个字典值的迭代对象。
