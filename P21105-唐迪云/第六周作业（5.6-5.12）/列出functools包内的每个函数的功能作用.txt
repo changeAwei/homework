@@ -1,0 +1,59 @@
+1.functools.cmp_to_key()
+  语法：functools.cmp_to_key(func)
+
+  该函数用于将旧式的比较函数转换为关键字函数
+
+  旧式的比较函数：接收两个参数，返回比较的结果。返回值小于零则前者小于后  者，返回值大于零则相反，返回值等于零则两者相等。
+
+  关键字函数：接收一个参数，返回其对应的可比较对象。例如 sorted(), min  (), max(), heapq.nlargest(), heapq.nsmallest(), itertools.groupby() 都  可作为关键字函数。
+
+  在 Python 3 中，有很多地方都不再支持旧式的比较函数，此时可以使用   cmp_to_key() 进行转换。
+
+  举例：
+  sorted(iterable, key=cmp_to_key(cmp_func)) 
+
+2.functools.total_ordering()
+  语法：functools.total_ordering(cls)  
+
+  这是一个类装饰器，用于自动实现类的比较运算。
+
+  我们只需要在类中实现 __eq__() 方法和以下方法中的任意一个 __lt__(),   __le__(), __gt__(), __ge__()，那么 total_ordering() 就能自动帮我们实现  余下的几种比较运算。
+
+3.functools.reduce()
+  语法：functools.reduce(function, iterable[, initializer])  
+
+  该函数与 Python 内置的 reduce() 函数相同，主要用于编写兼容 Python 3的  代码
+
+  举例：
+    from functools import reduce
+    def add(x,y):
+        return x+y
+ 
+    print reduce(add,[1,2,3,4,5])
+  
+  #reduce的功能是将list中的前两个值作为参数传给add函数，然后将add的结果和第三个值再次传给add函数，以此类推，最终返回一个结果
+
+4.functools.partial()
+  语法：functools.partial(func[, *args][, **keywords])  
+
+  返回一个 partial 对象，调用该对象的效果相当于调用 func 函数，并传入位  置参数 args 和关键字参数 keywords 。如果调用该对象时传入了 位置参数 ，  则这些参数会被 添加到 args 中。如果传入了 关键字参数 ，则会被添加到   keywords 中
+
+  举例：
+  from functools import partial
+  def add(x,y,z):
+      return x+y+z
+  newadd=partial(add,y=1,z=2)
+  print newadd(3)
+  print newadd(55555)
+
+  #用partial定义新的函数newadd，但是简化了参数列表，只传入一个参数即可
+
+5.functools.update_wrapper()
+  语法：functools.update_wrapper(wrapper, wrapped[, assigned][,   updated])  
+
+  主要用于装饰器函数的定义中，置于包装函数之前。如果没有对包装函数进行更  新，那么被装饰后的函数所具有的元信息就会变为包装函数的元信息，而不是原  函数的元信息。
+
+6.functools.wraps()
+  语法：functools.wraps(wrapped[, assigned][, updated])  
+
+  wraps()简化了update_wrapper()函数的调用它等价于 partial  (update_wrapper, wrapped=wrapped, assigned, updated=updated)
