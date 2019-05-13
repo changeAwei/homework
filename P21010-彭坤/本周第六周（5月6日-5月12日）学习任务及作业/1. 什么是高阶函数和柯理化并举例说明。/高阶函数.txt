@@ -1,0 +1,27 @@
+# 高阶函数至少满足下面二个条件中的一个：
+①：接收一个或者多个函数作为参数；
+②：返回为一个函数；
+
+函数本身可赋值给变量:
+import math
+math.sqrt(25)
+fun = math.sqrt
+print(fun(10))
+
+函数作为参数:
+def add(x, y, fn):
+    return fn(x) +fn(y)
+add(2, -1, abs)
+
+filter函数:
+筛选序列
+filter（func, lst），将func作用于lst的每个元素，然后根据返回值是True或False判断是保留还是丢弃该元素。
+
+nlst = list(range(-10, 10))
+
+def is_negative(x):
+    return x < 0
+
+flst = filter(is_negative, nlst)
+print(nlst)
+print(list(flst))

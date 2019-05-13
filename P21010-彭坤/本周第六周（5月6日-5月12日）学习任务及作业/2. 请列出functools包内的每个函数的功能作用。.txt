@@ -1,0 +1,39 @@
+functools.partial
+
+作用:
+functools.partial 通过包装手法，允许我们 "重新定义" 函数签名
+用一些默认参数包装一个可调用对象,返回结果是可调用对象，并且可以像原始对象一样对待
+冻结部分函数位置函数或关键字参数，简化函数,更少更灵活的函数参数调用
+
+functool.update_wrapper
+
+默认partial对象没有__name__和__doc__, 这种情况下，对于装饰器函数非常难以debug.使用update_wrapper(),
+从原始对象拷贝或加入现有partial对象
+
+它可以把被封装函数的__name__、module、__doc__和 __dict__
+都复制到封装函数去(模块级别常量WRAPPER_ASSIGNMENTS, WRAPPER_UPDATES)
+
+functool.wraps
+
+调用函数装饰器partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated)的简写
+
+functools.reduce
+
+functools.reduce(function, iterable[, initializer])
+等同于内置函数reduce()
+用这个的原因是使代码更兼容(python3)
+
+functools.cmp_to_key
+
+functools.cmp_to_key(func)
+将老式鼻尖函数转换成key函数，用在接受key函数的方法中
+(such as sorted(), min(), max(), heapq.nlargest(), heapq.nsmallest(), itertools.groupby())
+一个比较函数，接收两个参数，小于，返回负数，等于，返回0，大于返回整数
+key函数，接收一个参数，返回一个表明该参数在期望序列中的位置
+
+functools.total_ordering
+
+functools.total_ordering(cls)
+这个装饰器是在python2.7的时候加上的，它是针对某个类如果定义了__lt__、le、gt、__ge__这些方法中的至少一个，
+使用该装饰器，则会自动的把其他几个比较函数也实现在该类中
+
