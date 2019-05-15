@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#-*- coding:utf-8 -*-
 '''
 1. 如何为函数定义keyword-only参数（写出个例子即可）？
 2. 什么是LEGB，请解释
@@ -37,19 +38,23 @@ keyword2(1,2,3,4,5,x=3,y=4)
 	
 	#!/usr/bin/env python
 '''
+print('enter number +operator + number , three empty means exits')
 def num(number):
   while True:
     i=input('    %s number : ' % number)
-    if i.isdigit():
+    if i.isdigit() or i == '':
         return i
 
 def ope():
   while True:
     i=input('    operator (+-*/) : ')
-    if i == "+" or i == "-" or i == "*" or i == "/":
+    if i == "+" or i == "-" or i == "*" or i == "/" or i == '':
         return i
 
-
-a=num('first')+ope()+num('second')
-print(a+'=',end='')
-print(eval(a))
+while True:
+  a=num('first')+ope()+num('second')
+  if a == '':
+      exit(0)
+  else:
+      print(a+'=',end='')
+      print(eval(a))
