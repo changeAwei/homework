@@ -51,7 +51,7 @@ def lru_cache(T):
     return _lru_cache
 
 
-@lru_cache(T=10)  # add = lru_cache(add)(T=1)
+@lru_cache(T=10)  # add = lru_cache(T=10)(add)
 def add(x, y=1):
     time.sleep(3)
     value = x + y
