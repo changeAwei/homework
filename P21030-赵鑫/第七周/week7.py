@@ -37,12 +37,12 @@ MessagePack：是一个基于二进制高效的对象序列化类库，可用于
 from pathlib import Path
 import os
 
-p = Path('d:/tmp1')
+p = Path('d:/tmp')
 def replace_suffix(p:Path):
     for x in p.iterdir():
         if x.is_dir():
             replace_suffix(x)
-        else:
+        elif x.suffix == '.htm':
             os.rename(str(x),Path(x).with_suffix('.html'))
 
 replace_suffix(p)
