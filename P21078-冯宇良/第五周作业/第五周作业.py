@@ -27,7 +27,7 @@ def entry():# 输入
     num1 = int(input('请输入数字'))
     operator = input('请输入运算符(+/-/*//)')
     num2 = int(input('请输入数字'))
-    if num2 == 0:
+    if operator =='/' and num2 == 0:
         return zero()
     return calculator(num1,operator,num2)
 

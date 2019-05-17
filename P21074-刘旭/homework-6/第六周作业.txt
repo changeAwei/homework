@@ -1,0 +1,38 @@
+1. 什么是高阶函数和柯理化并举例说明。
+高阶函数：接收一个或多个函数作为参数，或者输出一个函数。
+def add(x,y):
+	def fn(x=1):
+		x += 1
+		return x	
+	return fn
+柯里化：将原先接收两个参数的函数变成接收一个参数的函数的过程，
+		新的函数返回一个以原有第二个参数作为参数的函数。
+def add(x,y)
+	return x + y 
+---->
+def fn(x)
+	def add(y)
+		return x + y
+	return add
+	
+2. 请列出functools包内的每个函数的功能作用。
+functools.cmp_to_key(func):
+将老式的比较函数（comparison function）转化为关键字函数（key function）。与接受key function的
+工具一同使用（如 sorted(), min(), max(), heapq.nlargest(), itertools.groupby())。该函数主要用
+来将程序转成 Python 3 格式的，因为 Python 3 中不支持比较函数。
+functools. lru_cache(maxsize=128, typed=False)：
+lru_cache是一个装饰器，能够给函数添加缓存能力，maxsize设定了缓存的大小，是2的次幂时功能执行的最好。
+取None则无上限。typed如果设为True，则同值不同类型的参数会被分开存储。如3和3.0。
+functools.reduce(function, iterable[, initializer])：
+将具备两个参数的函数function累加到序列iterable的各项中，从左到右，直到把该序列的值削减到只有一个。
+functools.partial(func, *args, **keywords)：
+partial对象可以将函数参数或关键字的某些部分冻结起来，调用partial对象时传入未冻结的参数，简化了调用过程。
+functools.update_wrapper：
+将原函数wrapped函数的元数据（module, name, qualname, annotations ，doc）复制给wrapper函数。
+functools.wraps：
+用作一个装饰器，简化调用上一个函数update_wrapper的过程。
+
+4. 什么是类型注解并说明其背后的目的。
+由于Python是动态语言，变量随时可以被赋值，且能被赋值为不同类型，导致代码无法直观判断参数类型，不易察觉错误，引入函数注解对函数的参数以及返回值进行类型注解，不做强制要求，只提供辅助说明，便于第三方进行代码分析，发现bug。
+
+

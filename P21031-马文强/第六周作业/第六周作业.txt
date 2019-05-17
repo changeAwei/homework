@@ -1,0 +1,93 @@
+1. 什么是高阶函数和柯理化并举例说明。
+2. 请列出functools包内的每个函数的功能作用。
+4. 什么是类型注解并说明其背后的目的。
+
+1.答：高阶函数一定有下面两种特性，一是传参的时候用到了函数，二是返回值是一个函数。只要满足这
+两个特性之一的就是高阶函数。
+柯里化就是把一个两参的函数转化成内外嵌套的两个一参函数。如：
+def fn(x):
+    def _fn(y):
+        return x + y
+    return _fn
+
+2. 答：
+import  functools 
+
+（1）cmp_to_key(func)  这个函数是将python 2 中的旧式的比较函数转换成新式的 key function（键函数）
+cmp_to_key(func)在一些函数的key参数中使用，如sortde(),min(),max()等。
+如： sorted(iterable, key=cmp_to_key(locale.strcoll))  
+  
+（2）@lru_cache(maxsize=128, typed=False) 这是一个装饰器，提供缓存功能。用于包装一个函数，在下
+次以相同传参调用时直接返回上一次的结果，用于节约频繁请求的时间。用于内部结构使用了字典，所以位置
+参数和关键字参数都要可hash。另外不同顺序进行传参时会被认为是不同的参数调用。
+maxsize决定了缓存的最大上限是128，如果maxsize=None，则表示LRU功能被禁用，且缓存的数量无上限。
+但是其实对于缓存来说没有必要一口气直接开辟出一个很大的很久都用不完的大空间，很浪费资源，还是随时
+用随时开辟的方法最好，所以maxsize设置为2的幂时性能是最佳的。
+typed默认情况下是False，如果typed=True，则表示的是不同类型的参数被当做不同情况分别缓存。如3和3.0
+
+（3）partial(func, *args, **kwargs) 
+源码：
+def partial(func, *args, **keywords):
+    def newfunc(*fargs, **fkeywords):
+        newkeywords = keywords.copy()   #外层关键字参数字典进行更新，如果是关键字传参，则拷贝，不是则是空字典
+        newkeywords.update(fkeywords)  #用内层关键字参数字典进行更新，如果是关键字传参则添加进去，不是则空。
+        return func(*args, *fargs, **newkeywords)  #第一的位置是外层的位置参数传参，第二个位置是内层的位置传参
+    newfunc.func = func  
+    newfunc.args = args  #收集位置参数
+    newfunc.keywords = keywords  #收集关键字参数
+    return newfunc
+
+从源码中可以看出来，partial调用以后，返回的是func函数，其中func是作为partial中的第一个参数。偏函数就是把func函数的部分参数
+固定下来，相当于这部分固定下来的参数有了缺省值，然后返回一个新的函数
+
+（4）reduce(function, iterable[, initializer])
+源码：
+def reduce(function, iterable, initializer=None):
+    it = iter(iterable)
+    if initializer is None:
+        value = next(it)
+    else:
+        value = initializer
+    for element in it:
+        value = function(value, element)
+    return value
+
+reduce的参数是一个函数，可迭代对象，初始化值。把可迭代对象包一下变成一个生成器。然后初始化值如果是None，则生成器第一个值给value
+如果给初始化传实参，则实参是value。然后遍历生成器扔进function中，如果function函数是一个相加函数，则初始化的值加遍历的生成器之后的
+值返回出去，如果是相见的，则初始化的值与依次遍历生成器产生的值相减返回出去。总之你想要达到一个什么效果，就在function这里选择什么
+函数实现。
+
+（5）@wraps(wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)  #因为后面两个参数是用了缺省值，所以也可以
+把这个装饰器看做是一参的装饰器，这个装饰器的作用就是为了调用函数update_wrapper()  另外：wrapped指的是被包装的函数
+源码：
+def wraps(wrapped,
+          assigned = WRAPPER_ASSIGNMENTS,
+          updated = WRAPPER_UPDATES):
+    return partial(update_wrapper, wrapped=wrapped    #  返回一个偏函数，这个偏函数又返回update_wrapper 这个函数，所以其实就是调用update_wrapper
+
+（6）update_wrapper(wrapper, wrapped, assigned=WRAPPER_ASSIGNMENTS, updated=WRAPPER_UPDATES)
+例：
+>>> def my_decorator(f):
+...     @wraps(f)   #wraps(example) -> partial(update_wrapper,wrapped=example) ->update_wrapper(wrapper,wrapped=example) 
+                          # 所以@wraps(f) 在这里等价于@update_wrapper((wrapper,wrapped=example) 然后把下面的标识符用位置传参提上来在return回去就完成了偷梁换柱的作用。
+...     def wrapper(*args, **kwds):
+...         print('Calling decorated function')
+...         return f(*args, **kwds)
+...     return wrapper
+...
+>>> @my_decorator
+... def example():
+...     """Docstring"""
+...     print('Called example function')
+...
+>>> example()
+
+update_wrapper((dst=wrapper, src=example) 的功能主要就是把原函数example的名字，模块，说明还有文档字符串这些属性都给目标wrapper
+
+4.答：python语言是动态语言，这是它最显著的优点，同时也成为了一个最明显也是最需要解决的缺点。因为动态所以变量随时可以被重新赋值，修改，定义。变量可以一直变化
+而且可以被赋予不同的类型。但是因为这个原因，所以变量的类型就不在是人为决定的了，而是解释器来决定的。好比一个函数里面的两个参数，这两个参数是什么类型，写函数
+的人是决定不了的，只有被调用以后实际传入的实参是什么类型，那么此时这两个变量就是什么类型了。那么这就造成了一个弊端，就是如果传入的实参类型不对，那么就会出现
+异常，但是这种不可控的因素目前还没有被很好的掌握。
+所以为了能解决这一弊端，python引入了类型注解这种方法，def add(x:int, y:int) -> int : 通过给参数和返回值进行注解这样的一个方法，来建议使用者传入注解的类型，但是这
+也只是一种建议，并未做强制的要求。因为一旦强制下来，实质上python的特性就变成静态语言了。所以说类型注解这种方法其实也只是一种辅助的说明，并不会对函数的参数进
+行类型的检查。

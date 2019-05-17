@@ -1,0 +1,92 @@
+
+1. 什么是高阶函数和柯理化并举例说明
+
+高阶函数:一个函数一另一个函数为参数传入,或者作为返回值返回,那么该函数称为高阶函数
+
+柯里化:将多个参数的函数变换成一个单一参数(最初函数的第一个参数)的函数，并且返回接受余下的参数且返回结果的新函数的技术
+
+2 请列出functools包内的每个函数的功能作用
+
+import functools
+
+functools.update_wrapper(wrapper,wrapped) 
+   
+  将函数wrapped的属性信息覆盖更新函数wrapper的函数信息,返回属性更新后的函数wrapper,
+  用于装饰器函数的定义中
+
+
+functools.cmp_to_key(mycmp)
+   
+   接受一个比较函数,将其转换为一个关键字函数
+   比较函数mycpm是一个可以接受两个参数的函数,可以返回1,-1,0三种情况.
+   关键字函数用于排序或分组,接受一个参数.它在sorted，min，max，heapq.nlargest，itertools.groupby等函数中使用,
+ 
+
+functools.lru_cache(maxsize=128, typed=False)
+
+    这是一个函数装饰器,通过一个字典缓存被装饰函数最近最少的返回值.
+    如果maxsize=None,则禁用LRU功能,可以无限缓存
+    如果typed=True,则不同类型的函数参数将单独缓存
+
+functools.partial(func,*args,**keywords)
+
+    将函数func的部分参数固定下来，相当于将这些参数添加默认值,形成一个新的函数并返回，是对原函数的封装
+    实际上是返回一个可调用的partial对象
+
+functools.partialmethod(func, *args, **keywords)
+   
+    返回一个行为类似partial的新的partialmethod描述符.它会用于类属性的定义,不会在其他地方直接调用
+    func必须是一个描述符或者可调用对象
+    
+
+functools.wraps(wrapper)
+
+    这是一个带参函数装饰器,是函数update_wrapper(wrapper,wrapped)固定参数wrapper的偏函数.
+    常用于装饰器函数的定义中,更新函数wrapper的属性信息,不会在其他地方直接调用
+
+functools.singledispatch(func)
+
+   单分派函数,用于装饰另外一个函数的定义,实现函数的重载.
+   根据函数func的第一个参数的类型,实现不同的函数功能
+
+
+functools.total_ordering(cls)
+
+   装饰类.如果类中实现了__eq__,以及__lt__,__le__,__gt__,__ge__中任意一个方法,装饰后就可以实现该类任意两个对象的比较大小
+
+
+functools.reduce(func, seq, initial=None)
+
+   使用函数func消减序列seq所有元素.func必须可接受两个参数
+   第一次消减时,如果initial=None,则使用seq的前两个参数作为func的参数传入;否则传入initial和seq的第一个参数
+
+
+4. 什么是类型注解并说明其背后的目的
+
+在函数定义的过程中,可以给函数的参数及返回值做出类型说明.
+目的是为了提供代码的可读性
+
+Python提供了一个工具方便我们测试代码里的类型注解正确性，mypy   
+
+安装 pip install mypy
+
+测试: mypy filename.py
+
+如果没有错误则没有输出，如果有错误则会有相应输出
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
