@@ -42,7 +42,7 @@ def replace_suffix(p:Path):
         if x.is_dir():
             replace_suffix(x)
         elif x.suffix == '.htm':
-            os.rename(str(x),Path(x).with_suffix('.html'))
+            os.rename(x,x.with_suffix('.html'))
 
 p = Path('d:/tmp')
 replace_suffix(p)
