@@ -1,0 +1,23 @@
+python的pickle库:
+     所有的python中的数据类型都可以转化成字符串形式
+     pickle序列化的内容只有python能理解且部分反序列化依赖代码
+
+   Python中的序列化、反序列化模块。
+   dumps 对象序列化为bytes对象
+   dump 对象序列化到文件对象，就是存入文件
+   loads 从bytes对象反序列化
+   load 对象反序列化，从文件读取数据
+
+JSON(JavaScript Object Notation, JS 对象标记):
+     通用的序列化格式
+     只有很少的一部分数据据类型通过json转化成字符串
+
+   dumps json编码
+   dump json编码并存入文件
+   loads json解码
+   load json解码，从文件读取数据
+
+MessagePack库：
+     MessagePack是一个基于二进制高效的对象序列化类库，可用于跨语言通信
+     它可以像JSON那样，在许多种语言之间交换结构对象
+     但是它比JSON更快速也更轻巧
