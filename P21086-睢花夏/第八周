@@ -1,0 +1,26 @@
+1. 使用本周和之前所学习的知识实现cat命令（支持查看内容和-n参数功能即可）
+import argparse
+parser = argparse.ArgumentParser()
+
+parser.add_argument('files', metavar='F', type=str, nargs='+')
+parser.add_argument('-n', '--numbers', action='store_true',
+        help='Print line numbers')
+
+args = parser.parse_args()
+
+print(">>> parsed args: ", args)
+
+line_number = 1
+for in_file_name in args.files:
+    in_file = open(in_file_name)
+    if args.numbers:
+        for line in in_file.readlines():
+            print(f"\t{line_number}\t{line}", end="")
+            line_number += 1
+    else:
+        print(in_file.read())
+        
+2. 有字符串”not 404 found 张三 99 深圳”，使用正则过滤掉英文和数字，最终得到”张三 深圳”
+[^a-z,0-9,\s]{2}
+
+3. 结合本周所讲的知识，总结如何设计一个日志分析系统，分析可能遇到问题和解决方法（文字阐述）。
