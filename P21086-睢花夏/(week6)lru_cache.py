@@ -26,7 +26,7 @@ def hua_cache(fn):
 
         key = tuple(sorted(params_dict.items()))
         # 判断是否需要缓存
-        if key not in local_cache.keys():
+        if key not in local_cache:
             local_cache[key] = fn(*args, **kwargs)
         return key, local_cache[key]
     return wrapper
