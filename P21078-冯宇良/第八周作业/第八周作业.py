@@ -29,5 +29,5 @@ import re
 s = "not 404 found 张三 99 深圳"
 lst = s.split(" ")                            # ['not', '404', 'found', '张三', '99', '深圳']
 nolst = re.findall("\d+|[a-zA-Z]+", s)        # ['not', '404', 'found', '99']
-tmp = [x for x in lst if not x in nolst]      # ['张三', '深圳']
+tmp = [x for x in lst if x not in nolst]      # ['张三', '深圳']
 print(" ".join(tmp))                          # 张三 深圳
