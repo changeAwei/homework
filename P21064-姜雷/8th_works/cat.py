@@ -6,8 +6,8 @@ import argparse
 
 
 parser = argparse.ArgumentParser(prog='cat', description='view file contents')
-parser.add_argument('file', nargs='+')
-parser.add_argument('-n', action='store_true')
+parser.add_argument('file', nargs='*',help='file to view')
+parser.add_argument('-n','--number',action='store_true',help='number all output lines')
 
 args = parser.parse_args()
 
@@ -29,4 +29,4 @@ def view(file_list, n=False):
                 num += 1
 
 
-view(args.file, args.n)
+view(args.file, args.number)
