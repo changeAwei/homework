@@ -20,7 +20,7 @@ def view(file_list, n=False):
     if not n:
         for file in file_list:
             p = Path(file)
-            if not p.is_file():
+            if not p.absolute().is_file():
                 print('{} must be a file'.format(file))
             else:
                 with p.open() as f:
@@ -30,7 +30,7 @@ def view(file_list, n=False):
         num = 1
         for file in file_list:
             p = Path(file)
-            if not p.is_file():
+            if not p.absolute().is_file():
                 print('{} must be a file'.format(file))
             else:
                 with p.open() as f:
