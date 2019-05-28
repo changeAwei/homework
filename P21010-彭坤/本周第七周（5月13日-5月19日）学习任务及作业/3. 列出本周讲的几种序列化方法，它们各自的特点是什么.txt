@@ -1,0 +1,22 @@
+在Python中对对象进行序列化有三种方式，pickle/shelve/JSON
+
+
+pickle模块为Python对象结构的序列化和反序列化实现了一个基本但强大的算法。 
+“Pickling”是将Python对象层次结构转换为字节流的过程，“unpickling”是相反的操作，即字节流转换回对象层次结构。
+
+
+
+shelve是一个持久的，类似字典的对象。与“dbm”数据库的不同之处在于，shelve上的值（不是键！）
+本质上可以是任意Python对象 - pickle模块可以处理的任何东西。这包括大多数类实例，
+递归数据类型和包含大量共享子对象的对象。键是普通的字符串。
+
+
+
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。
+同时也易于机器解析和生成。在原生Python中也有相应的库json。
+
+
+1、JSON只能处理基本数据类型。pickle和shelve能处理所有Python的数据类型。
+
+2、JSON用于各种语言之间的字符转换。pickle和shelve用于Python程序对象的持久化或者Python程序间对象网络传输，
+但不同版本的Python序列化可能还有差异。
