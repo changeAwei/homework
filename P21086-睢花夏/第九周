@@ -36,7 +36,7 @@ print(Person.__dict__)
 #静态方法
 class Person:
     @classmethod
-    def class_method(cls): # cls是什么
+    def class_method(cls):
         print('class = {0.__name__} ({0})'.format(cls)) 
         cls.HEIGHT = 170
     @staticmethod
