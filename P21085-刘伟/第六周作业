@@ -1,0 +1,187 @@
+Python第六周作业
+1.什么是高阶函数和柯里化并举例说明.
+答:高级函数: 数学概念y=g(f(x)),在数学和计算机科学中,高阶函数应当至少满足下面条件的函数,接受一个或多个函数作为参数,输出一个函数return
+   柯里化: 将原来接收两个参数的函数变成新的接收的一个参数的函数过程,新的函数返回一个以原有第二个参数为参数的函数
+   
+   
+   举例：
+   def sort(iterable,reverse=False,key=str):
+		newlist = [] #创建一个新列表
+		for x in iterable:
+			for i,y in enumerate(newlist):
+				flag = key(x) > key(y) if reverse else key(x) < key(y)
+				if flag:
+					newlist.insert(i,x)
+					break
+			else:
+				newlist.append(x)
+				
+		return newlist
+		
+	sort([1,2,3,4,5,6],True) #调用
+		
+
+	举例:
+		def add(x,y):
+			return x + y
+			
+		#函数嵌套做柯里化
+		def add(x):
+			def fn(y):
+				return x + y
+			return fn
+		
+		add(5)(6) #调用
+		
+		
+		
+2、请列出functools包内的每个函数的功能作用
+   答:在ipython或者pycharm中直接导入 import functools
+      reduce方法
+		reduce方法,就是减少的意思，可迭代对象不能为空;初始值没提供就在可迭代对象中取一个元素
+		导入reduce
+		from functools import reduce
+		reduce(lamada value,x:value + x, range(5))
+		
+	  partial方法
+		把函数,部分的参数固定下来，相当于为部分的参数添加了一个固定的默认值，形成一个新的函数并返回partial生成的新函数,是对原函数的封装
+		
+		#partial方法举例
+		#导入库
+		from functools import partial
+		from functools import wraps
+		import inspect
+		
+		def add(x,y,*args)->int:
+			print(args)
+			return x + y
+		newadd = partial(add,1,3,5,6) #生成一个新的函数 1,3固定，5,6固定
+		print(inspect.signature(newadd)) #签名
+		print(newadd(5))
+		
+	lru_cache方法
+		导入库 from functools import lru_cache
+		@lru_cache()缓存的目的就是为了查询块，频繁的数据使用需要做缓存。缓存跟时间相关,过了指定的时间就会过期
+		
+		lru_cache装饰器应用
+			同样的函数参数一定得到同样的结果
+			函数执行时间很长，且要多次执行
+			本质是函数调用的参数=>返回值
+			缺点：
+				不支持缓存过期,key无法过期,失效
+				不支持清除操作,
+				不支持分布式,是一个单机的缓存
+		斐波那契数列数列为例
+		
+		from functools import lru_cache
+		
+		def fib(n):
+			if n < 3:
+				return 1
+			return fib(n-1) + fib(n-2)
+			
+			print([i] for i range(35) )
+			
+3、请使用已学过的装饰器相关知识自己实现funtools.lur_cache
+from functools import wraps, lru_cache
+import inspect
+import time
+import datetime
+
+#增加logger装饰器查看执行时间
+def logger(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        start = datetime.datetime.now()
+        ret = fn(*args, **kwargs)
+        delta = (datetime.datetime.now() - start).total_seconds()
+        print(fn.__name__, delta)
+        return ret
+    return wrapper
+
+#柯里化
+def mag_cache(duration=5):
+    def _mag_cache(fn):
+        local_cache = {}  #对不同函数名是不同的cache，定义字典
+        @wraps(fn)
+        def wrapper(*args, **kwargs):   #接受各种参数
+			#缓清除存
+            def _chear_expire(): #不想给别人用在函数名前加_
+                expire_keys = [] #定义列表
+                for k,(_,stamp) in local_cache.items(): #前面的不要丢弃掉_,解构stamp
+                    if datetime.datetime.now().timestamp() - stamp > duration:
+                        expire_keys.append(k) #把k记录下来
+
+                #缓存清除
+                for k in expire_keys:
+                    local_cache.pop(k)
+            #做封装
+            def _make_key(args, kwargs):
+                # 参数处理，构建key
+                sig = inspect.signature(fn)
+                parmas = sig.parameters  # 有序字典
+                params_dict = {}  # 定义字典
+           
+                # 位置传参
+                params_dict.update(zip(parmas.keys(), args))  #配对
+                # 关键字传参
+                params_dict.update(kwargs)
+                # 缺省值传参
+                for k, v in parmas.items():  #定义的所有参数
+                    if k not in params_dict:
+                        params_dict[k] = v.default  # v从default中拿出来塞在字典中去
+                key = tuple(sorted(params_dict.items())) #排序
+                print(key)
+                return key
+
+            _chear_expire() #调用缓存清除
+            key = _make_key(args, kwargs)
+
+            #判断缓存问题,如果这个值不在缓存中就计算一下把值给local_cache[key]
+            if key not in local_cache.keys():
+                local_cache[key] = fn(*args, **kwargs),datetime.datetime.now().timestamp()
+            return local_cache[key] #不管上面的值存在与否，这里都保证一个值
+        return wrapper
+    return _mag_cache
+            
+
+@logger
+@mag_cache()  #传递实参
+def add(x=4,y=5):
+    time.sleep(3)
+    return x + y
+
+#调用函数
+add()
+print('~~~~~~~~~~~~~')
+add(4,5)
+print('++++++++++++++++')
+add(y=5,x=4)
+print('==================')
+			
+
+4、什么是类型注解并说明其背后的目的
+就是为了解决动态语言的弊端，由于python是动态语言,变量随时可以被赋值,且能赋值为不同的类型
+python不是静态编译性语言,变量类型是在运行器决定的
+python不做强制性约束
+def add(x,y):
+	return x + y
+print(add(4,5))
+print(add('hello','world'))
+#调用函数
+add(4,'hello') # 数字和字符串不能相加
+
+
+函数注解Function Annotations
+来解决动态语言定义的弊端
+def add(x:int,y:int)->int:
+    '''
+
+    :param x: int
+    :param y: int
+    :return: int
+    '''
+    return x + y
+print(add(4,5))
+print(add('mag','edu'))
+
